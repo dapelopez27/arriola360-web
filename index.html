@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arriola360 · Inmobiliaria</title>
+<meta name="description" content="Venta, alquiler y remodelación de propiedades. Escríbenos por WhatsApp.">
+<style>
+:root{--bg:#f7f6f2;--ink:#1c1c1a;--mut:#6b6b66;--card:#fff;--acc:#0f5c4d;--wa:#25d366;--line:#e4e2da}
+@media(prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f1f0ea;--mut:#a3a39b;--card:#1f1f1d;--acc:#4cc2a8;--line:#333330}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:28px 16px 12px;max-width:960px;margin:auto}
+h1{margin:0;font-size:1.6rem}
+header p{color:var(--mut);margin:.25rem 0 0}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav div{max-width:960px;margin:auto;display:flex;gap:8px;padding:10px 16px;overflow-x:auto}
+nav button{flex:1;white-space:nowrap;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+nav button[aria-selected=true]{background:var(--acc);color:#fff;border-color:var(--acc)}
+main{max-width:960px;margin:auto;padding:16px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ph{aspect-ratio:4/3;background:linear-gradient(135deg,#b9d8cf,#e8dfc9);display:grid;place-items:center;font-size:3rem;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.price{font-size:1.25rem;font-weight:700;color:var(--acc)}
+.meta{color:var(--mut);font-size:.9rem}
+.row{display:flex;gap:8px;margin-top:auto;padding-top:8px;flex-wrap:wrap}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;border:0;font:inherit;font-weight:600;text-decoration:none;cursor:pointer;text-align:center}
+.wa{background:var(--wa);color:#04210f;flex:1}
+.sec{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+dialog{border:0;border-radius:16px;padding:20px;max-width:420px;width:calc(100% - 32px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:#0008}
+label{display:block;font-size:.9rem;color:var(--mut);margin:10px 0 4px}
+input,select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--bg);color:var(--ink)}
+section.box{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+section.box h2{margin-top:0}
+.calc{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+td,th{padding:8px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+.fab{position:fixed;right:16px;bottom:16px;z-index:9;background:var(--wa);color:#04210f;padding:14px 18px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px #0004}
+footer{text-align:center;color:var(--mut);padding:32px 16px 90px;font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <h1>Arriola360</h1>
+  <p>Venta · Alquiler · Remodelación. Mira, elige y escríbenos por WhatsApp.</p>
+</header>
+
+<nav><div role="tablist" id="tabs">
+  <button role="tab" data-t="venta" aria-selected="true">Venta</button>
+  <button role="tab" data-t="alquiler" aria-selected="false">Alquiler</button>
+  <button role="tab" data-t="remodelacion" aria-selected="false">Remodelación</button>
+</div></nav>
+
+<main>
+  <div id="list" class="grid"></div>
+
+  <section class="box" id="calc">
+    <h2>Calculadora de financiamiento</h2>
+    <div class="calc">
+      <div><label>Precio</label><input id="c-precio" type="number" value="1200000" min="0"></div>
+      <div><label>Enganche %</label><input id="c-eng" type="number" value="20" min="0" max="100"></div>
+      <div><label>Tasa anual %</label><input id="c-tasa" type="number" value="7" step="0.1" min="0"></div>
+    </div>
+    <table><thead><tr><th>Plazo</th><th>Cuota mensual</th><th>Total a pagar</th></tr></thead><tbody id="c-out"></tbody></table>
+    <p class="meta">Cálculo de referencia. La cuota real depende del banco.</p>
+  </section>
+</main>
+
+<footer>© Arriola360 · Los precios y datos pueden cambiar sin previo aviso.</footer>
+<a class="fab" id="fab" target="_blank" rel="noopener">WhatsApp</a>
+
+<dialog id="cita">
+  <form method="dialog" id="f">
+    <h3 style="margin-top:0">Agendar cita</h3>
+    <p class="meta" id="f-prop"></p>
+    <label>Tu nombre</label><input id="f-nom" required>
+    <label>Día preferido</label><input id="f-dia" type="date" required>
+    <label>¿Cómo pensás pagar?</label>
+    <select id="f-pago"><option>Contado</option><option>Financiamiento bancario</option><option>Aún no lo sé</option></select>
+    <label>Presupuesto aproximado</label><input id="f-pres" placeholder="Ej. 1,200,000">
+    <div class="row">
+      <button class="btn wa" type="submit">Enviar por WhatsApp</button>
+      <button class="btn sec" type="button" id="f-x">Cancelar</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+// ===== Configuración: lo único que el cliente edita =====
+const WA = "50254134111";          // número de WhatsApp con código de país, sin + ni espacios
+const MONEDA = "Q";               // cambiar a "Q", "L", "MX$", etc.
+const PROPS = [                    // foto: ruta o URL; vacío = placeholder
+  {id:1,tipo:"venta",titulo:"Casa en residencial cerrado",precio:1200000,zona:"Zona 16",hab:4,ban:3,m2:280,foto:""},
+  {id:2,tipo:"venta",titulo:"Local comercial en avenida principal",precio:850000,zona:"Zona 10",hab:0,ban:2,m2:120,foto:""},
+  {id:3,tipo:"alquiler",titulo:"Apartamento amueblado",precio:900,zona:"Zona 14",hab:2,ban:2,m2:85,foto:"",mensual:true},
+  {id:4,tipo:"alquiler",titulo:"Oficina con parqueo",precio:1500,zona:"Zona 9",hab:0,ban:1,m2:70,foto:"",mensual:true},
+  {id:5,tipo:"remodelacion",titulo:"Remodelación de cocina y baños",precio:0,zona:"Cotizamos sin costo",hab:0,ban:0,m2:0,foto:""},
+  {id:6,tipo:"remodelacion",titulo:"Adecuación de local comercial",precio:0,zona:"Cotizamos sin costo",hab:0,ban:0,m2:0,foto:""},
+];
+// ========================================================
+
+const $ = s => document.querySelector(s);
+const fmt = n => MONEDA + Math.round(n).toLocaleString("en-US");
+const wa = txt => `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`;
+const ICON = {venta:"🏠",alquiler:"🔑",remodelacion:"🛠️"};
+let tab = "venta";
+
+function render(){
+  $("#list").innerHTML = PROPS.filter(p=>p.tipo===tab).map(p=>{
+    const datos = [p.hab&&`${p.hab} hab`, p.ban&&`${p.ban} baños`, p.m2&&`${p.m2} m²`].filter(Boolean).join(" · ");
+    const precio = p.precio ? fmt(p.precio)+(p.mensual?" /mes":"") : "Cotización gratis";
+    return `<article class="card">
+      <div class="ph">${p.foto?`<img src="${p.foto}" alt="${p.titulo}" loading="lazy">`:ICON[p.tipo]}</div>
+      <div class="body"><div class="price">${precio}</div><strong>${p.titulo}</strong>
+        <div class="meta">${p.zona}${datos?" · "+datos:""}</div>
+        <div class="row">
+          <a class="btn wa" target="_blank" rel="noopener" href="${wa(`Hola, me interesa: ${p.titulo} (${precio}).`)}">WhatsApp</a>
+          <button class="btn sec" data-cita="${p.id}">Agendar cita</button>
+        </div></div></article>`;
+  }).join("");
+  $("#calc").hidden = tab!=="venta";
+}
+
+$("#tabs").onclick = e => {
+  const b = e.target.closest("button"); if(!b) return;
+  tab = b.dataset.t;
+  document.querySelectorAll("#tabs button").forEach(x=>x.setAttribute("aria-selected", x===b));
+  render();
+};
+
+// Cita -> mensaje de WhatsApp con filtro básico (forma de pago y presupuesto)
+let cur;
+$("#list").onclick = e => {
+  const b = e.target.closest("[data-cita]"); if(!b) return;
+  cur = PROPS.find(p=>p.id==b.dataset.cita);
+  $("#f-prop").textContent = cur.titulo;
+  $("#f-dia").min = new Date().toISOString().slice(0,10);
+  $("#cita").showModal();
+};
+$("#f-x").onclick = () => $("#cita").close();
+$("#f").onsubmit = () => {
+  const m = `Hola, soy ${$("#f-nom").value}. Quiero una cita para ver: ${cur.titulo}.\nDía: ${$("#f-dia").value}\nPago: ${$("#f-pago").value}\nPresupuesto: ${$("#f-pres").value||"—"}`;
+  window.open(wa(m), "_blank");
+};
+
+// Amortización: cuota fija mensual
+function calc(){
+  const precio=+$("#c-precio").value, eng=+$("#c-eng").value/100, r=+$("#c-tasa").value/100/12;
+  const P = precio*(1-eng);
+  $("#c-out").innerHTML = [10,20,30].map(a=>{
+    const n=a*12, c = r ? P*r/(1-Math.pow(1+r,-n)) : P/n;
+    return `<tr><td>${a} años</td><td>${fmt(c)}</td><td>${fmt(c*n+precio*eng)}</td></tr>`;
+  }).join("");
+}
+["#c-precio","#c-eng","#c-tasa"].forEach(s=>$(s).oninput=calc);
+
+$("#fab").href = wa("Hola, vi su página y quiero información.");
+render(); calc();
+</script>
+</body>
+</html>
