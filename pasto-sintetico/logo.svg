@@ -1,18 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-label="Pasto Sintético Guatemala">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 270" role="img" aria-label="Pasto Sintético Guatemala">
   <defs>
-    <clipPath id="c"><circle cx="48" cy="48" r="44"/></clipPath>
+    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="0" y1="92" x2="0" y2="196">
+      <stop offset="0" stop-color="#81c784"/><stop offset="1" stop-color="#2e7d32"/>
+    </linearGradient>
+    <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="0" y1="92" x2="0" y2="196">
+      <stop offset="0" stop-color="#2e7d32"/><stop offset="1" stop-color="#0d3d12"/>
+    </linearGradient>
   </defs>
-  <circle cx="48" cy="48" r="44" fill="#1b5e20"/>
-  <g clip-path="url(#c)">
-    <rect y="48" width="96" height="48" fill="#43a047"/>
-    <path d="M0 62h96v8H0zM0 78h96v8H0z" fill="#66bb6a"/>
-    <g fill="#c8e6c9">
-      <path d="M30 56 34 22 38 56z"/><path d="M42 56 48 14 54 56z"/><path d="M56 56 62 24 66 56z"/>
-      <path d="M22 56 24 34 30 56z"/><path d="M66 56 72 36 74 56z"/>
-    </g>
+  <text x="200" y="62" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue',Impact,Arial,sans-serif" font-weight="800" font-size="46" fill="#14281a" textLength="330" lengthAdjust="spacingAndGlyphs">PASTO SINTÉTICO</text>
+  <g>
+    <path d="M200 196 L66 92H334z" fill="none"/>
+    <path d="M200 196 L70 92 L100 92z" fill="url(#a)"/>
+    <path d="M200 196 L108 92 L138 92z" fill="url(#b)"/>
+    <path d="M200 196 L146 92 L176 92z" fill="url(#a)"/>
+    <path d="M200 196 L184 92 L216 92z" fill="url(#b)"/>
+    <path d="M200 196 L224 92 L254 92z" fill="url(#a)"/>
+    <path d="M200 196 L262 92 L292 92z" fill="url(#b)"/>
+    <path d="M200 196 L300 92 L330 92z" fill="url(#a)"/>
   </g>
-  <circle cx="48" cy="48" r="44" fill="none" stroke="#fff" stroke-width="3"/>
-  <text x="108" y="44" font-family="system-ui,Segoe UI,Arial,sans-serif" font-weight="800" font-size="26" fill="#1b5e20" textLength="206" lengthAdjust="spacingAndGlyphs">PASTO SINTÉTICO</text>
-  <rect x="108" y="54" width="206" height="4" rx="2" fill="#43a047"/>
-  <text x="108" y="82" font-family="system-ui,Segoe UI,Arial,sans-serif" font-weight="600" font-size="20" fill="#43a047" textLength="206" lengthAdjust="spacing">GUATEMALA</text>
+  <path d="M58 84V104L184 206Q200 218 216 206L342 104V84" fill="none" stroke="#1b5e20" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="200" y="256" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="24" fill="#14281a" textLength="170" lengthAdjust="spacing">GUATEMALA</text>
 </svg>
