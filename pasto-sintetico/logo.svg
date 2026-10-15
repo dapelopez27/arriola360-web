@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-label="Pasto Sintético Guatemala">
+  <defs>
+    <clipPath id="c"><circle cx="48" cy="48" r="44"/></clipPath>
+  </defs>
+  <circle cx="48" cy="48" r="44" fill="#1b5e20"/>
+  <g clip-path="url(#c)">
+    <rect y="48" width="96" height="48" fill="#43a047"/>
+    <path d="M0 62h96v8H0zM0 78h96v8H0z" fill="#66bb6a"/>
+    <g fill="#c8e6c9">
+      <path d="M30 56 34 22 38 56z"/><path d="M42 56 48 14 54 56z"/><path d="M56 56 62 24 66 56z"/>
+      <path d="M22 56 24 34 30 56z"/><path d="M66 56 72 36 74 56z"/>
+    </g>
+  </g>
+  <circle cx="48" cy="48" r="44" fill="none" stroke="#fff" stroke-width="3"/>
+  <text x="108" y="44" font-family="system-ui,Segoe UI,Arial,sans-serif" font-weight="800" font-size="30" fill="#1b5e20" letter-spacing="1">PASTO SINTÉTICO</text>
+  <rect x="108" y="54" width="206" height="4" rx="2" fill="#43a047"/>
+  <text x="108" y="82" font-family="system-ui,Segoe UI,Arial,sans-serif" font-weight="600" font-size="20" fill="#43a047" letter-spacing="9">GUATEMALA</text>
+</svg>
