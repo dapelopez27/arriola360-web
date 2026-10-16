@@ -14,10 +14,10 @@ body{margin:0;background:#fff;color:var(--ink);font:17px/1.55 Inter,system-ui,sa
 .wrap{max-width:1200px;margin:auto;padding:0 clamp(16px,4vw,32px)}
 h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1;margin:0}
 h1{font-size:clamp(44px,6vw,84px);padding-top:64px}
-.intro{max-width:56ch;margin:20px 0 0}
+.intro{max-width:58ch;margin:20px 0 0}
 .opt{padding-top:clamp(72px,9vw,120px)}
 .opt h2{font-size:clamp(34px,4vw,52px);margin-bottom:10px}
-.opt > p{max-width:60ch;margin:0 0 28px}
+.opt > p{max-width:62ch;margin:0 0 28px}
 .boards{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
 .board{display:grid;place-items:center;padding:clamp(24px,4vw,56px);min-height:340px}
 .light{background:var(--tone)}.dark{background:var(--ink)}
@@ -28,7 +28,8 @@ h1{font-size:clamp(44px,6vw,84px);padding-top:64px}
 .fav{width:32px;height:32px;display:grid;place-items:center;background:var(--tone)}
 svg{display:block;max-width:100%;height:auto}
 .wm{font-family:Cinzel,serif;font-weight:600}
-.num{font-family:"Cormorant Garamond",serif;font-weight:600}
+.serif{font-family:"Cormorant Garamond",serif;font-weight:600}
+.sans{font-family:Inter,sans-serif;font-weight:600}
 .tag{font-family:Inter,sans-serif;font-weight:500}
 .orig{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
 @media(max-width:800px){.boards,.orig{grid-template-columns:1fr}}
@@ -46,110 +47,145 @@ footer{padding:96px 0 64px;color:var(--mut)}
     <path d="M10 92 C30 66 70 54 112 56 C74 60 40 72 10 92 Z" fill="#b08a2e"/>
     <g fill="#b08a2e"><rect x="48" y="74" width="6" height="6"/><rect x="56" y="74" width="6" height="6"/><rect x="48" y="82" width="6" height="6"/><rect x="56" y="82" width="6" height="6"/></g>
   </symbol>
-  <!-- Monograma 360°: anillo casi completo, A como techo con ventana -->
-  <symbol id="a-ring" viewBox="0 0 120 120">
-    <path d="M86 15 A52 52 0 1 0 104 38" fill="none" stroke="#b08a2e" stroke-width="5" stroke-linecap="round"/>
-    <circle cx="104" cy="38" r="4.5" fill="#b08a2e"/>
-    <path d="M60 22 L92 94 H80 L60 47 L40 94 H28 Z" fill="currentColor"/>
-    <g fill="#b08a2e"><rect x="54" y="66" width="5.5" height="5.5"/><rect x="61" y="66" width="5.5" height="5.5"/><rect x="54" y="73" width="5.5" height="5.5"/><rect x="61" y="73" width="5.5" height="5.5"/></g>
+  <!-- Arco: la A bajo un arco, como los de Antigua Guatemala -->
+  <symbol id="a-arco" viewBox="0 0 120 120">
+    <path d="M18 114 V54 A42 42 0 0 1 102 54 V114" fill="none" stroke="#b08a2e" stroke-width="5"/>
+    <path d="M58.5 30 L61.5 30 L41 104 L37.5 104 Z" fill="currentColor"/>
+    <path d="M57 30 L65 30 L86 104 L74 104 Z" fill="currentColor"/>
+    <path d="M31 104.5 H46 M68 104.5 H92" stroke="currentColor" stroke-width="2.5"/>
+    <g fill="#b08a2e"><rect x="54" y="78" width="5" height="5"/><rect x="61" y="78" width="5" height="5"/><rect x="54" y="85" width="5" height="5"/><rect x="61" y="85" width="5" height="5"/></g>
+  </symbol>
+  <!-- Nave: dos planos de techo forman la A, con la línea dorada del piso -->
+  <symbol id="a-nave" viewBox="0 0 120 120">
+    <path d="M60 12 L68 26 L32 96 H14 Z" fill="currentColor"/>
+    <path d="M60 12 L106 96 H88 L60 44 Z" fill="currentColor" opacity=".72"/>
+    <rect x="10" y="102" width="100" height="7" fill="#b08a2e"/>
+    <g fill="#b08a2e"><rect x="53" y="66" width="6" height="6"/><rect x="61" y="66" width="6" height="6"/><rect x="53" y="74" width="6" height="6"/><rect x="61" y="74" width="6" height="6"/></g>
   </symbol>
 </svg>
 
 <div class="wrap">
   <h1>Propuestas de logo</h1>
-  <p class="intro">Tres caminos que mantienen la esencia del logo actual: la A como techo, el arco dorado de la vuelta completa (360) y la ventana de la casa. Todas funcionan sobre fondo claro u oscuro, sin recuadro, y se leen bien en tamaño pequeño (perfil de TikTok, ícono del sitio).</p>
+  <p class="intro">Cuatro caminos que conservan lo que hace reconocible al logo actual: la A como techo, la ventana de la casa y el negro con dorado. Cada uno se muestra sobre fondo claro y oscuro, y en tamaño pequeño (perfil de TikTok, ícono del sitio), que es donde más lo va a ver la gente.</p>
 
   <section class="opt">
     <h2>Logo actual</h2>
-    <p>Como referencia. Ya lo usamos en el sitio con el fondo crema quitado.</p>
+    <p>Como referencia. Es el que usa hoy el sitio, solo sin el fondo crema.</p>
     <div class="orig">
       <div class="board light" style="min-height:280px"><img src="assets/logo/logo-original.png" alt="Logo actual de Arriola 360" style="width:min(360px,100%)"></div>
-      <p style="margin:0">Lo que funciona: el arco dorado y la ventana cuentan la idea en un vistazo. Lo que se puede mejorar: las letras A del nombre sin travesaño se leen como "ΛRRIOLΛ", el lema es muy pequeño para redes y la imagen tiene textura de render, así que no escala limpia.</p>
+      <p style="margin:0">Lo que funciona: el arco dorado y la ventana cuentan la idea en un vistazo. Lo que se puede mejorar: las A del nombre sin travesaño se leen como "ΛRRIOLΛ", el lema es muy pequeño para redes y la imagen no escala limpia porque no es un vector.</p>
     </div>
   </section>
 
   <section class="opt">
-    <h2>A · Refinado</h2>
-    <p>La misma composición, redibujada en vector. Nombre en letras romanas clásicas (Cinzel), el 360 en dorado y el lema más legible. Es el cambio más pequeño: el cliente reconoce su logo de inmediato.</p>
+    <h2>1 · Arco</h2>
+    <p>La A queda dentro de un arco, como los portales coloniales de Antigua Guatemala: un guiño local que transmite tradición y confianza, y que funciona como "puerta" a la propiedad. Es el más elegante y el que mejor se ve como sello o rótulo.</p>
     <div class="boards">
       <div class="board light">
-        <svg viewBox="0 0 520 330" width="440" role="img" aria-label="Propuesta A">
-          <use href="#a-orig" x="200" y="0" width="120" height="120" style="color:#141414"/>
-          <text class="wm" x="260" y="200" text-anchor="middle" font-size="64" letter-spacing="9" fill="#141414">ARRIOLA</text>
-          <path d="M120 238 H205 M315 238 H400" stroke="#b08a2e" stroke-width="2"/>
-          <text class="num" x="260" y="254" text-anchor="middle" font-size="48" letter-spacing="6" fill="#b08a2e">360</text>
-          <text class="tag" x="260" y="304" text-anchor="middle" font-size="15" letter-spacing="3.5" fill="#141414">VENTA · RENTA · INVERSIÓN INMOBILIARIA</text>
+        <svg viewBox="0 0 520 330" width="440" role="img" aria-label="Propuesta Arco">
+          <use href="#a-arco" x="200" y="0" width="120" height="120" style="color:#141414"/>
+          <text class="serif" x="260" y="204" text-anchor="middle" font-size="70" letter-spacing="12" fill="#141414">ARRIOLA</text>
+          <text class="serif" x="260" y="256" text-anchor="middle" font-size="40" letter-spacing="16" fill="#b08a2e">360</text>
+          <text class="tag" x="260" y="304" text-anchor="middle" font-size="14" letter-spacing="4" fill="#55524c">BIENES RAÍCES · GUATEMALA</text>
         </svg>
       </div>
       <div class="board dark">
-        <svg viewBox="0 0 520 330" width="340" role="img" aria-label="Propuesta A sobre negro">
-          <use href="#a-orig" x="200" y="0" width="120" height="120" style="color:#fff"/>
-          <text class="wm" x="260" y="200" text-anchor="middle" font-size="64" letter-spacing="9" fill="#fff">ARRIOLA</text>
-          <path d="M120 238 H205 M315 238 H400" stroke="#b08a2e" stroke-width="2"/>
-          <text class="num" x="260" y="254" text-anchor="middle" font-size="48" letter-spacing="6" fill="#b08a2e">360</text>
-          <text class="tag" x="260" y="304" text-anchor="middle" font-size="15" letter-spacing="3.5" fill="#fff">VENTA · RENTA · INVERSIÓN INMOBILIARIA</text>
+        <svg viewBox="0 0 520 330" width="340" role="img" aria-label="Propuesta Arco sobre negro">
+          <use href="#a-arco" x="200" y="0" width="120" height="120" style="color:#fff"/>
+          <text class="serif" x="260" y="204" text-anchor="middle" font-size="70" letter-spacing="12" fill="#fff">ARRIOLA</text>
+          <text class="serif" x="260" y="256" text-anchor="middle" font-size="40" letter-spacing="16" fill="#b08a2e">360</text>
+          <text class="tag" x="260" y="304" text-anchor="middle" font-size="14" letter-spacing="4" fill="#c9c4b8">BIENES RAÍCES · GUATEMALA</text>
         </svg>
       </div>
     </div>
     <div class="sizes">
-      <div><span class="app"><svg viewBox="0 0 120 120" width="64" style="color:#fff"><use href="#a-orig"/></svg></span>Perfil de redes</div>
-      <div><span class="app sm"><svg viewBox="0 0 120 120" width="32" style="color:#fff"><use href="#a-orig"/></svg></span>Ícono</div>
-      <div><span class="fav"><svg viewBox="0 0 120 120" width="24" style="color:#141414"><use href="#a-orig"/></svg></span>Pestaña</div>
+      <div><span class="app"><svg viewBox="0 0 120 120" width="64" style="color:#fff"><use href="#a-arco"/></svg></span>Perfil de redes</div>
+      <div><span class="app sm"><svg viewBox="0 0 120 120" width="32" style="color:#fff"><use href="#a-arco"/></svg></span>Ícono</div>
+      <div><span class="fav"><svg viewBox="0 0 120 120" width="24" style="color:#141414"><use href="#a-arco"/></svg></span>Pestaña</div>
     </div>
   </section>
 
   <section class="opt">
-    <h2>B · Horizontal</h2>
-    <p>El símbolo a la izquierda y el nombre en una sola línea. Pensado para la barra del sitio, la firma de WhatsApp, rótulos de "Se renta" y la parte de atrás de las tarjetas.</p>
+    <h2>2 · Firma</h2>
+    <p>Solo el nombre, escrito como una marca de lujo. El techo dorado sobre la primera A y la ventana bastan para decir "inmobiliaria" sin dibujar una casa. Es la opción más premium y la que más se parece a las inmobiliarias de alto nivel.</p>
     <div class="boards">
       <div class="board light">
-        <svg viewBox="0 0 600 140" width="480" role="img" aria-label="Propuesta B">
+        <svg viewBox="0 0 560 220" width="480" role="img" aria-label="Propuesta Firma">
+          <path d="M20 86 L66 40 L112 86" fill="none" stroke="#b08a2e" stroke-width="4"/>
+          <g fill="#b08a2e"><rect x="60" y="64" width="5" height="5"/><rect x="67" y="64" width="5" height="5"/><rect x="60" y="71" width="5" height="5"/><rect x="67" y="71" width="5" height="5"/></g>
+          <text class="serif" x="16" y="160" font-size="112" letter-spacing="2" fill="#141414">Arriola</text>
+          <text class="serif" x="398" y="160" font-size="56" letter-spacing="6" fill="#b08a2e">360</text>
+          <text class="tag" x="20" y="200" font-size="14" letter-spacing="4" fill="#55524c">VENTA · RENTA · INVERSIÓN INMOBILIARIA</text>
+        </svg>
+      </div>
+      <div class="board dark">
+        <svg viewBox="0 0 560 220" width="360" role="img" aria-label="Propuesta Firma sobre negro">
+          <path d="M20 86 L66 40 L112 86" fill="none" stroke="#b08a2e" stroke-width="4"/>
+          <g fill="#b08a2e"><rect x="60" y="64" width="5" height="5"/><rect x="67" y="64" width="5" height="5"/><rect x="60" y="71" width="5" height="5"/><rect x="67" y="71" width="5" height="5"/></g>
+          <text class="serif" x="16" y="160" font-size="112" letter-spacing="2" fill="#fff">Arriola</text>
+          <text class="serif" x="398" y="160" font-size="56" letter-spacing="6" fill="#b08a2e">360</text>
+          <text class="tag" x="20" y="200" font-size="14" letter-spacing="4" fill="#c9c4b8">VENTA · RENTA · INVERSIÓN INMOBILIARIA</text>
+        </svg>
+      </div>
+    </div>
+    <div class="sizes">
+      <div><span class="app"><svg viewBox="0 0 132 132" width="70"><path d="M22 70 L66 26 L110 70" fill="none" stroke="#b08a2e" stroke-width="6"/><text class="serif" x="66" y="118" text-anchor="middle" font-size="64" fill="#fff">A</text></svg></span>Perfil de redes</div>
+      <div><span class="app sm"><svg viewBox="0 0 132 132" width="36"><path d="M22 70 L66 26 L110 70" fill="none" stroke="#b08a2e" stroke-width="8"/><text class="serif" x="66" y="118" text-anchor="middle" font-size="64" fill="#fff">A</text></svg></span>Ícono</div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <h2>3 · Nave</h2>
+    <p>Pensado para el giro comercial e industrial: la A se forma con dos planos de techo, como una nave o bodega, sobre una línea dorada de piso. Letras sin adornos, más modernas. Comunica "propiedades comerciales" mejor que las demás.</p>
+    <div class="boards">
+      <div class="board light">
+        <svg viewBox="0 0 520 300" width="440" role="img" aria-label="Propuesta Nave">
+          <use href="#a-nave" x="200" y="0" width="120" height="120" style="color:#141414"/>
+          <text class="sans" x="260" y="196" text-anchor="middle" font-size="52" letter-spacing="14" fill="#141414">ARRIOLA</text>
+          <text class="sans" x="260" y="240" text-anchor="middle" font-size="26" letter-spacing="18" fill="#b08a2e">360</text>
+          <text class="tag" x="260" y="282" text-anchor="middle" font-size="13" letter-spacing="4" fill="#55524c">PROPIEDADES COMERCIALES Y RESIDENCIALES</text>
+        </svg>
+      </div>
+      <div class="board dark">
+        <svg viewBox="0 0 520 300" width="340" role="img" aria-label="Propuesta Nave sobre negro">
+          <use href="#a-nave" x="200" y="0" width="120" height="120" style="color:#fff"/>
+          <text class="sans" x="260" y="196" text-anchor="middle" font-size="52" letter-spacing="14" fill="#fff">ARRIOLA</text>
+          <text class="sans" x="260" y="240" text-anchor="middle" font-size="26" letter-spacing="18" fill="#b08a2e">360</text>
+          <text class="tag" x="260" y="282" text-anchor="middle" font-size="13" letter-spacing="4" fill="#c9c4b8">PROPIEDADES COMERCIALES Y RESIDENCIALES</text>
+        </svg>
+      </div>
+    </div>
+    <div class="sizes">
+      <div><span class="app"><svg viewBox="0 0 120 120" width="62" style="color:#fff"><use href="#a-nave"/></svg></span>Perfil de redes</div>
+      <div><span class="app sm"><svg viewBox="0 0 120 120" width="32" style="color:#fff"><use href="#a-nave"/></svg></span>Ícono</div>
+      <div><span class="fav"><svg viewBox="0 0 120 120" width="24" style="color:#141414"><use href="#a-nave"/></svg></span>Pestaña</div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <h2>4 · Horizontal</h2>
+    <p>El símbolo actual a la izquierda y el nombre en una sola línea. Útil para la barra del sitio, la firma de WhatsApp, rótulos de "Se renta" y tarjetas. Combina con cualquiera de las anteriores.</p>
+    <div class="boards">
+      <div class="board light">
+        <svg viewBox="0 0 600 140" width="480" role="img" aria-label="Propuesta Horizontal">
           <use href="#a-orig" x="0" y="10" width="120" height="120" style="color:#141414"/>
           <text class="wm" x="140" y="82" font-size="56" letter-spacing="7" fill="#141414">ARRIOLA</text>
-          <text class="num" x="478" y="82" font-size="56" letter-spacing="3" fill="#b08a2e">360</text>
+          <text class="serif" x="478" y="82" font-size="56" letter-spacing="3" fill="#b08a2e">360</text>
           <text class="tag" x="142" y="116" font-size="14" letter-spacing="3.2" fill="#55524c">VENTA · RENTA · INVERSIÓN INMOBILIARIA</text>
         </svg>
       </div>
       <div class="board dark">
-        <svg viewBox="0 0 600 140" width="360" role="img" aria-label="Propuesta B sobre negro">
+        <svg viewBox="0 0 600 140" width="360" role="img" aria-label="Propuesta Horizontal sobre negro">
           <use href="#a-orig" x="0" y="10" width="120" height="120" style="color:#fff"/>
           <text class="wm" x="140" y="82" font-size="56" letter-spacing="7" fill="#fff">ARRIOLA</text>
-          <text class="num" x="478" y="82" font-size="56" letter-spacing="3" fill="#b08a2e">360</text>
+          <text class="serif" x="478" y="82" font-size="56" letter-spacing="3" fill="#b08a2e">360</text>
           <text class="tag" x="142" y="116" font-size="14" letter-spacing="3.2" fill="#c9c4b8">VENTA · RENTA · INVERSIÓN INMOBILIARIA</text>
         </svg>
       </div>
     </div>
   </section>
 
-  <section class="opt">
-    <h2>C · Monograma 360°</h2>
-    <p>La idea del nombre llevada al símbolo: un anillo dorado que da la vuelta casi completa, como un giro de 360°, y una A más firme que funciona como techo, con la ventana dentro. Es la opción más moderna y la que mejor se ve en tamaño pequeño.</p>
-    <div class="boards">
-      <div class="board light">
-        <svg viewBox="0 0 520 330" width="440" role="img" aria-label="Propuesta C">
-          <use href="#a-ring" x="195" y="0" width="130" height="130" style="color:#141414"/>
-          <text class="wm" x="260" y="212" text-anchor="middle" font-size="62" letter-spacing="9" fill="#141414">ARRIOLA</text>
-          <text class="num" x="260" y="262" text-anchor="middle" font-size="44" letter-spacing="14" fill="#b08a2e">360°</text>
-          <text class="tag" x="260" y="306" text-anchor="middle" font-size="15" letter-spacing="3.5" fill="#55524c">PROPIEDADES · GUATEMALA</text>
-        </svg>
-      </div>
-      <div class="board dark">
-        <svg viewBox="0 0 520 330" width="340" role="img" aria-label="Propuesta C sobre negro">
-          <use href="#a-ring" x="195" y="0" width="130" height="130" style="color:#fff"/>
-          <text class="wm" x="260" y="212" text-anchor="middle" font-size="62" letter-spacing="9" fill="#fff">ARRIOLA</text>
-          <text class="num" x="260" y="262" text-anchor="middle" font-size="44" letter-spacing="14" fill="#b08a2e">360°</text>
-          <text class="tag" x="260" y="306" text-anchor="middle" font-size="15" letter-spacing="3.5" fill="#c9c4b8">PROPIEDADES · GUATEMALA</text>
-        </svg>
-      </div>
-    </div>
-    <div class="sizes">
-      <div><span class="app"><svg viewBox="0 0 120 120" width="66" style="color:#fff"><use href="#a-ring"/></svg></span>Perfil de redes</div>
-      <div><span class="app sm"><svg viewBox="0 0 120 120" width="34" style="color:#fff"><use href="#a-ring"/></svg></span>Ícono</div>
-      <div><span class="fav"><svg viewBox="0 0 120 120" width="26" style="color:#141414"><use href="#a-ring"/></svg></span>Pestaña</div>
-    </div>
-  </section>
-
-  <footer>Propuestas para revisión. Los colores (negro y dorado) y la idea de la A con ventana se mantienen del logo actual.</footer>
+  <footer>Propuestas para revisión. El negro, el dorado y la idea de la A con ventana se mantienen del logo actual.</footer>
 </div>
 </body>
 </html>
