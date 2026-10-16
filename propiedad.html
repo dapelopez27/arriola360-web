@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Propiedad · Arriola 360</title>
+<meta name="description" content="Fotos, precio, medidas y ubicación. Agenda tu visita por WhatsApp con Arriola 360.">
+<link rel="icon" href="assets/logo/logo-marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Arriola 360, inicio"><img src="assets/logo/logo-marca.png" alt=""><b>ARRIOLA <span>360</span></b></a>
+    <nav aria-label="Secciones">
+      <a href="index.html#propiedades">Propiedades</a><a href="index.html#mapa">Mapa</a><a href="index.html#te-ayudamos">Te ayudamos</a><a href="index.html#construservicios">Construservicios</a>
+    </nav>
+    <a class="btn btn-wa" id="wa-top" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<main class="wrap" id="ficha"></main>
+
+<footer class="wrap">
+  <img class="logo" src="assets/logo/logo-original.png" alt="Arriola 360 · Venta, renta, inversión inmobiliaria" loading="lazy">
+  <div class="cols">
+    <p><b>WhatsApp</b><a data-wa="Hola, vi su página." target="_blank" rel="noopener">5413-4111</a></p>
+    <p><b>TikTok</b><a href="https://www.tiktok.com/@arriola360propiedades" target="_blank" rel="noopener">@arriola360propiedades</a></p>
+    <p><b>Oficina</b>Atención con cita previa</p>
+    <p><b>Construcción y remodelación</b>Construservicios</p>
+  </div>
+</footer>
+
+<dialog id="visor" aria-label="Fotos de la propiedad">
+  <div class="top"><span id="v-n"></span><button type="button" id="v-x" aria-label="Cerrar fotos">×</button></div>
+  <div class="track" id="v-track"></div>
+  <div class="nav"><button type="button" data-v="-1" aria-label="Foto anterior">‹</button><button type="button" data-v="1" aria-label="Foto siguiente">›</button></div>
+</dialog>
+
+<dialog id="cita">
+  <form method="dialog" id="f">
+    <h3>Agendar visita</h3>
+    <p id="f-prop" style="color:var(--mut);margin:8px 0 0"></p>
+    <label for="f-nom">Tu nombre</label><input id="f-nom" required autocomplete="name">
+    <label for="f-dia">Día que prefieres</label><input id="f-dia" type="date" required>
+    <label for="f-pago">¿Cómo piensas pagar?</label>
+    <select id="f-pago"><option>Contado</option><option>Financiamiento bancario</option><option>Aún no lo sé</option></select>
+    <label for="f-pres">Presupuesto aproximado</label><input id="f-pres" inputmode="numeric" placeholder="Ej. $900 al mes">
+    <div class="acts">
+      <button class="btn btn-wa" type="submit">Pedir mi visita</button>
+      <button class="btn btn-tone" type="button" id="f-x">Cancelar</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="datos.js"></script>
+<script src="comun.js"></script>
+<script>
+const p = PROPS.find(x => x.cod === new URLSearchParams(location.search).get("c"));
+
+if (!p) {
+  $("#ficha").innerHTML = `<a class="back" href="index.html#propiedades">← Todas las propiedades</a>
+    <div class="empty"><h3>No encontramos esa propiedad</h3><p>Puede que ya no esté disponible. Mira las que tenemos ahora o escríbenos.</p>
+    <a class="btn btn-ink" href="index.html#propiedades">Ver propiedades</a></div>`;
+  $("#wa-top").href = wa("Hola, vi su página y quiero información.");
+} else {
+  document.title = `${label(p)} · ${money(p.precio,p.mon)} · Arriola 360`;
+  $("#wa-top").href = wa(msgInteres(p));
+  const n = p.fotos.length;
+  const galeria = n
+    ? `<div class="mosaic">${p.fotos.slice(0,5).map((f,i)=>`<button type="button" data-foto="${i}" aria-label="Ver foto ${i+1} de ${n}"><img src="${f}" alt="${esc(p.titulo)}, foto ${i+1}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}></button>`).join("")}
+         ${n > 5 ? `<button type="button" class="btn btn-white all" data-foto="0">Ver las ${n} fotos</button>` : ""}
+         ${p.cond ? `<span class="cond">${esc(p.cond)}</span>` : ""}</div>
+       <div class="swipe"><div class="track" id="sw">${p.fotos.map((f,i)=>`<img src="${f}" alt="${esc(p.titulo)}, foto ${i+1}" ${i ? 'loading="lazy"' : ""} data-foto="${i}">`).join("")}</div><span class="n" id="sw-n">1 / ${n}</span>${p.cond ? `<span class="cond">${esc(p.cond)}</span>` : ""}</div>`
+    : `<div class="nomap" style="aspect-ratio:21/9"><b style="font:700 clamp(40px,5vw,72px)/1 var(--display)">${esc(p.clave[0][0])}</b><p>Las fotos de esta propiedad están en nuestra publicación de TikTok.</p><a class="btn btn-ink" href="${p.tiktok}" target="_blank" rel="noopener">Ver fotos en TikTok</a></div>`;
+  const ubic = p.mapa
+    ? `<div class="ubic"><h2>Ubicación</h2>
+         <iframe title="Mapa: ${esc(p.mapa.nombre)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${p.mapa.lat},${p.mapa.lng}&z=16&output=embed"></iframe>
+         <p>${esc(p.mapa.nombre)}</p>
+         <div class="acts"><a class="btn btn-tone" href="https://www.google.com/maps/search/?api=1&query=${p.mapa.lat},${p.mapa.lng}" target="_blank" rel="noopener">Abrir en Google Maps</a>
+         <a class="btn btn-tone" href="https://waze.com/ul?ll=${p.mapa.lat},${p.mapa.lng}&navigate=yes" target="_blank" rel="noopener">Ir con Waze</a></div></div>`
+    : `<div class="ubic"><h2>Ubicación</h2><div class="nomap"><p>Te compartimos la ubicación exacta al agendar tu visita.</p></div></div>`;
+  const otras = PROPS.filter(x => x !== p);
+
+  $("#ficha").innerHTML = `
+    <a class="back" href="index.html#propiedades">← Todas las propiedades</a>
+    ${galeria}
+    <div class="det">
+      <div>
+        <h1 class="rv split">${esc(p.titulo)}</h1>
+        <p class="where rv"><b class="kind">${esc(p.tipo)} en ${p.op}</b> · ${[p.zona, p.lugar].filter(Boolean).map(esc).join(" · ")}</p>
+        <ul class="specs rv">${p.clave.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
+        <div class="groups">${p.grupos.map(([t,l])=>`<div class="rv"><h2>${esc(t)}</h2><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>
+        ${ubic}
+      </div>
+      <aside class="side">
+        <div class="price">${money(p.precio,p.mon)}</div>
+        <p class="nota">${esc(p.nota)}</p>
+        <p class="cod">Código ${esc(p.cod)}</p>
+        <div class="acts">
+          <a class="btn btn-wa" href="${wa(msgInteres(p))}" target="_blank" rel="noopener">Preguntar por esta propiedad</a>
+          <button class="btn btn-ink" type="button" data-cita="${p.cod}">Agendar visita</button>
+        </div>
+        <button class="share" type="button" id="share">Compartir esta propiedad</button>
+      </aside>
+    </div>
+    ${otras.length ? `<section class="otras"><div class="head"><h2 class="rv split">Otras propiedades</h2></div><div class="cards">${otras.map(tarjeta).join("")}</div></section>` : ""}`;
+
+  // visor de fotos a pantalla completa
+  if (n) {
+    $("#v-track").innerHTML = p.fotos.map((f,i)=>`<img src="${f}" alt="${esc(p.titulo)}, foto ${i+1}" loading="lazy">`).join("");
+    const mover = carrusel($("#v-track"), $("#v-n"));
+    document.querySelectorAll("[data-v]").forEach(b => b.onclick = () => mover(+b.dataset.v));
+    document.querySelectorAll("button[data-foto], .swipe img").forEach(el => el.onclick = () => {
+      $("#visor").showModal();
+      const t = $("#v-track"); t.scrollLeft = +el.dataset.foto * t.clientWidth; $("#v-n").textContent = `${+el.dataset.foto+1} / ${n}`;
+    });
+    $("#v-x").onclick = () => $("#visor").close();
+    addEventListener("keydown", e => $("#visor").open && (e.key==="ArrowRight" ? mover(1) : e.key==="ArrowLeft" && mover(-1)));
+    carrusel($("#sw"), $("#sw-n"));
+  }
+
+  // compartir: menú del teléfono o copiar el enlace
+  $("#share").onclick = async () => {
+    const data = {title: label(p), text: `${label(p)} · ${money(p.precio,p.mon)} ${p.nota}`, url: location.href};
+    try { if (navigator.share) return await navigator.share(data);
+          await navigator.clipboard.writeText(location.href); $("#share").textContent = "Enlace copiado"; }
+    catch(e){ /* el usuario canceló */ }
+  };
+}
+bindWa(); iniciarCita(); revelar();
+</script>
+</body>
+</html>

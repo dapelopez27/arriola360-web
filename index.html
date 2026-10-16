@@ -4,215 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Arriola 360 · Propiedades en renta y venta en Guatemala</title>
-<meta name="description" content="Apartamentos, casas, bodegas y locales en renta y venta en Guatemala, con fotos reales, precio y ubicación. Agenda tu visita por WhatsApp.">
+<meta name="description" content="Apartamentos, casas, bodegas y locales en renta y venta en Guatemala, con fotos, precio y ubicación. Agenda tu visita por WhatsApp.">
 <meta property="og:title" content="Arriola 360 · Propiedades en Guatemala">
-<meta property="og:description" content="Fotos reales, precio y ubicación de cada propiedad. Agenda tu visita por WhatsApp.">
+<meta property="og:description" content="Fotos, precio y ubicación de cada propiedad. Agenda tu visita por WhatsApp.">
 <meta property="og:image" content="assets/alquiler-apartamento-zona10/04.jpg">
 <link rel="icon" href="assets/logo/logo-marca.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<style>
-:root{
-  --bg:#fff; --tone:#f2f2f0; --ink:#141414; --mut:#55524c; --gold:#b08a2e; --gold-ink:#8a6a1c;
-  --wa:#147a3d;
-  --serif:"Cormorant Garamond",Georgia,serif; --sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --m:clamp(16px,4vw,32px); --gap:clamp(88px,10vw,150px);
-}
-*{box-sizing:border-box;font-variant-numeric:lining-nums!important} /* el atajo font: la reinicia en cada elemento */
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
-a{color:inherit}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:1;margin:0}
-.wrap{max-width:1280px;margin:auto;padding-left:var(--m);padding-right:var(--m)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:14px 26px;border-radius:999px;border:0;font:600 16px/1 var(--sans);text-decoration:none;cursor:pointer;transition:transform .15s,background-color .15s}
-.btn:active{transform:scale(.97)}
-.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#0f6331}
-.btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#333}
-.btn-tone{background:var(--tone);color:var(--ink)}.btn-tone:hover{background:#e6e6e3}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-[id]{scroll-margin-top:84px}
-
-/* barra */
-.bar{position:sticky;top:0;z-index:1000;background:var(--bg)}
-.bar .wrap{display:flex;align-items:center;gap:24px;height:72px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
-.brand img{width:40px;height:auto}
-.brand b{font:600 22px/1 var(--serif);letter-spacing:.14em}
-.brand b span{color:var(--gold)}
-.bar nav{display:flex;gap:22px}
-.bar nav a{text-decoration:none;font-weight:500;font-size:15px}
-.bar nav a:hover{color:var(--gold-ink)}
-@media(max-width:900px){.bar nav{display:none}.bar .btn{padding:11px 18px;font-size:15px}}
-
-/* portada */
-.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(24px,5vw,64px)}
-.hero h1{font-size:clamp(48px,6.2vw,92px)}
-.hero p{font-size:clamp(18px,1.6vw,21px);max-width:38ch;margin:24px 0 0}
-.hero .acts{display:flex;gap:12px;flex-wrap:wrap}
-.hero figure{margin:0;aspect-ratio:4/5;overflow:hidden}
-.hero figure img{width:100%;height:100%;object-fit:cover}
-.hero figcaption{font-size:14px;color:var(--mut);margin-top:10px}
-@media(max-width:860px){.hero{grid-template-columns:1fr}.hero figure{aspect-ratio:4/3;order:-1;margin:0 calc(var(--m)*-1)}.hero figcaption{padding:0 var(--m)}}
-
-section{padding-top:var(--gap)}
-.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
-.head h2{font-size:clamp(44px,6vw,88px)}
-.head p{max-width:42ch;margin:0;color:var(--mut)}
-
-/* buscador (pestaña que se despliega) */
-.search{margin-top:32px}
-.search summary{display:inline-flex;align-items:center;gap:10px;cursor:pointer;list-style:none;background:var(--ink);color:#fff;font-weight:600;padding:14px 22px}
-.search summary::-webkit-details-marker{display:none}
-.search summary::after{content:"";width:8px;height:8px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
-.search[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
-.filters{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end;background:var(--tone);padding:20px}
-.filters .seg-wrap,.filters button[type=submit]{grid-column:1/-1}
-.filters .lab{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
-.filters label{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
-.filters select{width:100%;padding:12px 14px;font:inherit;border:0;background:#fff;color:var(--ink);border-radius:0}
-.seg{display:flex;background:#fff;padding:4px;gap:4px}
-.seg button{border:0;background:none;padding:9px 16px;font:600 15px/1 var(--sans);cursor:pointer;color:var(--ink);border-radius:999px}
-.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
-.count{font-size:15px;color:var(--mut);margin:0 0 32px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.count a,.count button{color:var(--ink);font:600 15px var(--sans);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:860px){.filters{grid-template-columns:1fr}.seg button{flex:1}.search summary{width:100%;justify-content:space-between}}
-
-/* fichas */
-.listing{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(20px,3vw,48px) clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(56px,6vw,96px)}
-.listing:nth-child(even) .gal{order:2}
-.gal{position:relative;background:var(--tone)}
-.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:3/2}
-.track::-webkit-scrollbar{display:none}
-.track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
-.gal .nav{position:absolute;inset:auto 12px 12px auto;display:flex;gap:8px;align-items:center}
-.gal .nav button{width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:20px;cursor:pointer}
-.gal .nav span{background:#141414cc;color:#fff;font-size:14px;padding:6px 12px;border-radius:999px}
-.gal .cond{position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;font-weight:600;font-size:14px;padding:6px 14px;border-radius:999px}
-.noph{aspect-ratio:3/2;display:grid;place-content:center;justify-items:center;text-align:center;gap:12px;padding:24px}
-.noph b{font:600 clamp(64px,9vw,128px)/1 var(--serif)}
-.kind{font-weight:600;color:var(--gold-ink)}
-.listing h3{font-size:clamp(34px,3.6vw,52px);margin:0 0 8px}
-.where{font-weight:500;margin:0 0 14px;color:var(--mut)}
-.price{font:600 clamp(28px,2.6vw,36px)/1 var(--serif)}
-.price small{font:500 15px var(--sans);color:var(--mut)}
-.cod{margin:8px 0 0;font-size:13px;color:#8a867d;letter-spacing:.02em}
-.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0;padding:0;list-style:none}
-.specs li{background:var(--tone);padding:12px 14px}
-.specs b{display:block;font:600 22px/1.1 var(--serif)}
-.specs span{font-size:14px;color:var(--mut)}
-.listing .acts{display:flex;gap:10px;flex-wrap:wrap}
-@media(max-width:860px){.listing{grid-template-columns:1fr}.listing:nth-child(even) .gal{order:0}.gal{margin:0 calc(var(--m)*-1)}}
-
-/* detalles */
-.more{grid-column:1/-1;order:3;background:var(--tone)}
-.more summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
-.more summary::-webkit-details-marker{display:none}
-.more summary::after{content:"+";font:500 28px/1 var(--sans);transition:transform .2s}
-.more[open] summary::after{transform:rotate(45deg)}
-.more-in{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;padding:0 16px 16px}
-.groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.groups > div{background:#fff;padding:20px 22px}
-.groups h4{font-size:30px;color:var(--gold-ink);margin:0 0 12px}
-.groups ul{margin:0;padding:0;list-style:none}
-.groups li{padding:6px 0 6px 26px;position:relative}
-.groups li::before{content:"";position:absolute;left:2px;top:.85em;width:12px;height:12px;border-radius:50%;background:var(--gold);transform:translateY(-50%)}
-.map{background:#fff;padding:16px}
-.map iframe{width:100%;aspect-ratio:4/3;border:0;display:block;background:#e6e6e3}
-.map p{margin:12px 0;font-weight:500}
-.map .acts{display:flex;gap:8px;flex-wrap:wrap}
-.nomap{display:grid;place-content:center;text-align:center;padding:24px}
-@media(max-width:860px){.more{margin:0 calc(var(--m)*-1)}.more-in,.groups{grid-template-columns:1fr}}
-.empty{background:var(--tone);padding:clamp(24px,4vw,48px);margin-bottom:48px}
-.empty h3{font-size:clamp(30px,3vw,42px);margin-bottom:12px}
-
-/* mapa general */
-#mapa-general{height:clamp(360px,55vw,560px);background:var(--tone)}
-.pin{background:var(--ink);color:#fff;font:600 14px/1 var(--sans);padding:8px 12px;border-radius:999px;white-space:nowrap;display:inline-block;transform:translate(-50%,-50%)}
-.pin:hover{background:var(--gold)}
-.leaflet-div-icon{background:none;border:0}
-.leaflet-popup-content{font:15px/1.4 var(--sans)}
-.leaflet-popup-content b{font:600 20px/1.1 var(--serif);display:block;margin-bottom:4px}
-.map-note{color:var(--mut);font-size:15px;margin:14px 0 0}
-
-/* te ayudamos */
-.lead{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,5vw,80px);align-items:start}
-.lead .txt p{font-size:19px;max-width:36ch}
-.lead form{background:var(--tone);padding:clamp(20px,3vw,40px)}
-.lead label{display:block;font-size:15px;font-weight:500;margin:16px 0 6px}
-.lead label:first-child{margin-top:0}
-.lead input,.lead select,.lead textarea,dialog input,dialog select{width:100%;padding:12px 14px;font:inherit;border:1px solid #d8d3c8;background:#fff;color:var(--ink);border-radius:0}
-.lead .row{display:grid;grid-template-columns:1fr auto;gap:10px}
-.lead .two{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips label{margin:0}
-.chips input{position:absolute;opacity:0;width:1px;height:1px}
-.chips span{display:inline-block;padding:10px 16px;background:#fff;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer}
-.chips input:checked + span{background:var(--ink);color:#fff}
-.chips input:focus-visible + span{outline:3px solid var(--gold);outline-offset:2px}
-.lead button[type=submit]{margin-top:24px;width:100%}
-@media(max-width:860px){.lead{grid-template-columns:1fr}.lead .two{grid-template-columns:1fr}}
-
-/* Construservicios */
-.remo{background:var(--tone);margin-top:var(--gap);padding:var(--gap) 0}
-.remo-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(48px,6vw,80px)}
-.remo-head img{width:clamp(200px,24vw,320px)}
-.remo-head h2{font-size:clamp(40px,5vw,72px);margin-bottom:14px}
-.remo-head p{margin:0;max-width:52ch;font-size:19px}
-.ba-wrap{display:grid;grid-template-columns:1fr 2fr;gap:clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(64px,8vw,112px)}
-.ba-pick{display:flex;flex-direction:column;gap:8px;margin-top:24px}
-.ba-pick button{text-align:left;padding:16px 18px;border:0;background:#fff;font:600 17px/1.3 var(--sans);cursor:pointer;color:var(--ink);transition:background-color .15s}
-.ba-pick button small{display:block;font-weight:400;color:var(--mut);font-size:15px;margin-top:2px}
-.ba-pick button[aria-pressed=true]{background:var(--ink);color:#fff}
-.ba-pick button[aria-pressed=true] small{color:#c9c4b8}
-.ba{position:relative;aspect-ratio:4/3;overflow:hidden;background:#ddd;--pos:50%}
-.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ba .after{clip-path:inset(0 0 0 var(--pos))}
-.ba .line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;pointer-events:none}
-.ba .line::after{content:"‹ ›";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-content:center;font:600 18px/1 var(--sans);color:var(--ink)}
-.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.ba .tag{position:absolute;top:14px;padding:6px 12px;background:#141414cc;color:#fff;font-size:14px;font-weight:600}
-.ba .t1{left:14px}.ba .t2{right:14px}
-.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,3vw,40px);margin-bottom:clamp(64px,8vw,112px)}
-.svc h3{font-size:30px;margin-bottom:10px}
-.svc p{margin:0;font-size:16px}
-.works{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.works figure{margin:0}
-.works figure div{overflow:hidden}
-.works img{aspect-ratio:4/3;width:100%;object-fit:cover;transition:transform .4s}
-.works figure:hover img{transform:scale(1.04)}
-.works figcaption{font-size:15px;margin-top:8px}
-.remo .acts{margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.remo .acts p{margin:0}
-@media(max-width:860px){.remo-head,.ba-wrap{grid-template-columns:1fr}.ba{margin:0 calc(var(--m)*-1)}.ba-pick{flex-direction:row;overflow-x:auto}.ba-pick button{flex:0 0 auto}.svc{grid-template-columns:1fr 1fr}.works{grid-template-columns:1fr 1fr;gap:12px}}
-
-/* cierre */
-footer{padding:var(--gap) 0 120px}
-footer .logo{width:clamp(220px,28vw,360px);margin-bottom:40px}
-footer .cols{display:flex;gap:clamp(24px,6vw,96px);flex-wrap:wrap}
-footer .cols p{margin:0}
-footer .cols b{display:block;font-size:14px;color:var(--mut);font-weight:500}
-
-
-dialog{border:0;padding:clamp(20px,4vw,32px);max-width:440px;width:calc(100% - 32px);box-shadow:0 20px 60px #0004} /* taste-skill-ignore: diálogo flotante */
-dialog::backdrop{background:#141414aa}
-dialog h3{font-size:34px}
-dialog label{display:block;font-size:15px;font-weight:500;margin:14px 0 6px}
-dialog .acts{display:flex;gap:10px;margin-top:22px}
-
-/* movimiento */
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity .45s cubic-bezier(.2,.7,.2,1),transform .45s cubic-bezier(.2,.7,.2,1)}
-.js .rv.in{opacity:1;transform:none}
-/* títulos: cada palabra sube desde su línea */
-.js .split.rv{opacity:1;transform:none}
-.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
-.split .w > span{display:inline-block;transform:translateY(105%);transition:transform .7s cubic-bezier(.2,.75,.15,1);transition-delay:calc(var(--i)*60ms)}
-.split.in .w > span{transform:none}
-.hero figure img{animation:drift 18s ease-out both}
-@keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
-@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.split .w > span{transform:none;transition:none}.hero figure img{animation:none}html{scroll-behavior:auto}}
-</style>
+<link rel="stylesheet" href="estilos.css">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -228,8 +28,10 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
 </header>
 
 <main id="top">
-  <div class="wrap hero">
-    <div>
+  <div class="hero">
+    <img src="assets/alquiler-apartamento-zona10/04.jpg" alt="Comedor con vista a la ciudad, apartamento en Edificio Moretti, zona 10" fetchpriority="high">
+    <a class="foto-nota" href="propiedad.html?c=ARR-102">Apartamento amueblado, zona 10 · En renta</a>
+    <div class="wrap">
       <h1 class="rv split">Encuentra el espacio ideal para ti</h1>
       <p class="rv">Apartamentos, casas, bodegas y locales en renta y venta en Guatemala.</p>
       <details class="search rv" id="buscador">
@@ -249,25 +51,21 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
         </form>
       </details>
     </div>
-    <figure>
-      <img src="assets/alquiler-apartamento-zona10/04.jpg" alt="Comedor con vista a la ciudad, apartamento en Edificio Moretti, zona 10" fetchpriority="high">
-      <figcaption>Vista desde el apartamento amueblado del Edificio Moretti, zona 10. En renta.</figcaption>
-    </figure>
   </div>
 
   <section id="propiedades" class="wrap">
     <div class="head">
       <h2 class="rv split">Explora las propiedades</h2>
-      <p class="rv">Desliza las fotos de cada una y abre los detalles para ver medidas, amenidades y ubicación.</p>
+      <p class="rv">Toca una propiedad para ver todas sus fotos, medidas, amenidades y ubicación.</p>
     </div>
     <p class="count"><span id="count" aria-live="polite"></span> <a href="#top" id="cambiar">Cambiar búsqueda</a> <button type="button" id="quitar" hidden>Quitar filtros</button></p>
-    <div id="lista"></div>
+    <div id="lista" class="cards"></div>
   </section>
 
   <section id="mapa" class="wrap">
     <div class="head">
       <h2 class="rv split">Ubicación en el mapa</h2>
-      <p class="rv">Toca un precio para abrir su ficha. El mapa muestra las mismas propiedades que tus filtros.</p>
+      <p class="rv">Toca un precio para abrir la propiedad. El mapa muestra lo mismo que tu búsqueda.</p>
     </div>
     <div id="mapa-general" role="region" aria-label="Mapa de propiedades en Ciudad de Guatemala"></div>
     <p class="map-note" id="map-note"></p>
@@ -295,7 +93,7 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
             <select id="l-tipo"><option>Apartamento</option><option>Casa</option><option>Bodega o nave industrial</option><option>Local comercial</option><option>Oficina</option><option>Terreno</option></select></div>
           <div><label for="l-zona">Zona o área</label><input id="l-zona" placeholder="Ej. zona 10, Carretera a El Salvador"></div>
         </div>
-        <label for="l-pres" id="l-pres-lab">Presupuesto</label>
+        <label for="l-pres" id="l-pres-lab">Presupuesto de compra</label>
         <div class="row"><input id="l-pres" type="number" inputmode="numeric" min="0" step="100" placeholder="Ej. 1500" required><select id="l-mon" aria-label="Moneda"><option>$</option><option>Q</option></select></div>
         <div class="two">
           <div><label for="l-nom">Tu nombre</label><input id="l-nom" autocomplete="name" required></div>
@@ -319,7 +117,7 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
       </div>
       <div class="ba-wrap">
         <div class="rv">
-          <h3 style="font-size:clamp(30px,3vw,42px)">Antes y después</h3>
+          <h3 style="font-size:clamp(24px,2.4vw,32px)">Antes y después</h3>
           <p>Arrastra la línea sobre la foto para ver el cambio.</p>
           <div class="ba-pick" role="group" aria-label="Elegir proyecto">
             <button type="button" aria-pressed="true" data-ba="portales">Local en Portales Mall<small>De obra gris a tienda</small></button>
@@ -341,7 +139,7 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
         <div class="rv"><h3>Acabados</h3><p>Pisos, tablayeso, cocinas, baños, pintura y ventanería.</p></div>
         <div class="rv"><h3>Instalaciones</h3><p>Electricidad, agua, aire acondicionado y fibra óptica.</p></div>
       </div>
-      <h3 class="rv" style="font-size:clamp(30px,3vw,42px);margin-bottom:24px">Obras de Construservicios</h3>
+      <h3 class="rv" style="font-size:clamp(24px,2.4vw,32px);margin-bottom:24px">Obras de Construservicios</h3>
       <div class="works">
         <figure class="rv"><div><img src="assets/remodelacion/san-marino-piscina.jpg" alt="Chalet en San Marino, Puerto de San José" loading="lazy"></div><figcaption>Chalet en San Marino, Puerto de San José</figcaption></figure>
         <figure class="rv"><div><img src="assets/remodelacion/mixco-fachada.jpg" alt="Vivienda en San Cristóbal, Mixco" loading="lazy"></div><figcaption>Vivienda en San Cristóbal, Mixco</figcaption></figure>
@@ -370,126 +168,26 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
   </div>
 </footer>
 
-
-<dialog id="cita">
-  <form method="dialog" id="f">
-    <h3>Agendar visita</h3>
-    <p id="f-prop" style="color:var(--mut);margin:8px 0 0"></p>
-    <label for="f-nom">Tu nombre</label><input id="f-nom" required autocomplete="name">
-    <label for="f-dia">Día que prefieres</label><input id="f-dia" type="date" required>
-    <label for="f-pago">¿Cómo piensas pagar?</label>
-    <select id="f-pago"><option>Contado</option><option>Financiamiento bancario</option><option>Aún no lo sé</option></select>
-    <label for="f-pres">Presupuesto aproximado</label><input id="f-pres" inputmode="numeric" placeholder="Ej. $900 al mes">
-    <div class="acts">
-      <button class="btn btn-wa" type="submit">Pedir mi visita</button>
-      <button class="btn btn-tone" type="button" id="f-x">Cancelar</button>
-    </div>
-  </form>
-</dialog>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="datos.js"></script>
+<script src="comun.js"></script>
 <script>
-// ===== Configuración: lo único que se edita para agregar propiedades =====
-const WA = "50254134111";   // WhatsApp de Arriola 360, con código de país
-const TC = 7.7;             // quetzales por dólar, solo para comparar precios en el filtro
-const fotos = (dir, n, portada) => {           // portada primero, luego las demás en orden
-  const all = Array.from({length:n}, (_,i) => `assets/${dir}/${String(i+1).padStart(2,"0")}.jpg`);
-  return [all[portada-1], ...all.filter((_,i) => i !== portada-1)];
-};
-// cod: código interno (ARR-1xx), también va en el WhatsApp · op: "renta" o "venta" · tipo: Apartamento, Casa, Bodega, Local, Oficina, Terreno · mapa: null si aún no hay ubicación
-const PROPS = [
-  {id:1, cod:"ARR-101", op:"renta", tipo:"Bodega", titulo:"Nave industrial", cond:"Nueva", zona:null, lugar:"Ubicación al agendar tu visita",
-   precio:9500, mon:"$", nota:"al mes, mantenimiento incluido",
-   clave:[["1,463 m²","de construcción"],["800 m²","de bodega"],["9 m","de altura al hombro"],["23","parqueos"]],
-   grupos:[
-     ["Espacios",["800 m² de bodega","200 m² de mezzanine corrido, a 5 m de altura","1,000 m² de área techada","463 m² de área de maniobras","2,103 v² de terreno"]],
-     ["Estructura",["9 m de altura al hombro y 11 m a la cumbrera","Ventanería de doble altura en aluminio anodizado","Puertas enrollables motorizadas"]],
-     ["Servicios",["Pozo de agua propio: 600 pies, 85 galones por minuto","6 baños, 3 con ducha y pila","Garita de seguridad con baño y dormitorio","23 parqueos para vehículos y personal"]],
-     ["Accesos",["Ubicación céntrica","Salida a varias rutas de entrada y salida de la ciudad"]],
-     ["Condiciones",["Construcción nueva","Renta de $9,500 al mes","Mantenimiento incluido"]]],
-   mapa:null,
-   fotos:fotos("alquiler-bodega-industrial",23,3)},
-  {id:2, cod:"ARR-102", op:"renta", tipo:"Apartamento", titulo:"Apartamento amueblado", zona:"Zona 10", lugar:"Edificio Moretti, 10a avenida y 15 calle",
-   precio:850, mon:"$", nota:"al mes, mantenimiento incluido",
-   clave:[["72 m²","de construcción"],["1","habitación"],["1","baño completo"],["Amueblado","listo para vivir"]],
-   grupos:[
-     ["El apartamento",["Sala, comedor y cocina","Habitación amplia","Baño completo","Balcón con vista a la ciudad","Cortinas instaladas"]],
-     ["Equipado con",["Refrigeradora y estufa","Extractor de olores","Torre de lavado y secado","Pila y calentador de agua"]],
-     ["Amenidades",["Gimnasio","Piscina","Salón social y sala de reuniones","BBQ lounge","Área de juegos para niños","Parqueo de visitas"]],
-     ["Ubicación y accesos",["10a avenida y 15 calle, zona 10","Cerca de centros comerciales","Restaurantes y farmacias a pocos minutos"]],
-     ["Condiciones",["Renta de $850 al mes","Incluye cuota de mantenimiento","Precio fijo"]]],
-   mapa:{lat:14.5937808, lng:-90.5083938, nombre:"Edificio Moretti, 10a avenida y 15 calle, zona 10"},
-   fotos:fotos("alquiler-apartamento-zona10",18,4)},
-  {id:3, cod:"ARR-103", op:"renta", tipo:"Apartamento", titulo:"Apartamento con balcón", zona:"Zona 10", lugar:"Edificio AVIA",
-   precio:1100, mon:"$", nota:"al mes + IVA, mantenimiento incluido",
-   clave:[["68 m²","de construcción"],["1","habitación"],["1","baño completo"],["1","parqueo + bodega"]],
-   grupos:[
-     ["El apartamento",["1 habitación","1 baño completo","Balcón amplio","Área de lavandería"]],
-     ["Condiciones",["Renta de $1,100 al mes + IVA","Mantenimiento incluido","1 parqueo y bodega incluidos"]]],
-   mapa:null, tiktok:"https://vt.tiktok.com/ZSgLJRPwo/",
-   fotos:[]},
-];
-// =========================================================================
+bindWa();
 
-const $ = s => document.querySelector(s);
-const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
-const money = (n,m) => m + Math.round(n).toLocaleString("en-US");
-const usd = p => p.mon === "Q" ? p.precio / TC : p.precio;
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const label = p => p.zona ? `${p.titulo} en ${p.zona}` : p.titulo;
-document.querySelectorAll("[data-wa]").forEach(a => a.href = wa(a.dataset.wa));
-
-// --- fichas ---
-function ficha(p){
-  const precio = money(p.precio, p.mon);
-  const gal = p.fotos.length
-    ? `<div class="track" tabindex="0" aria-label="Fotos de ${esc(p.titulo)}">${p.fotos.map((f,i)=>`<img src="${f}" alt="${esc(p.titulo)}, foto ${i+1}" loading="lazy">`).join("")}</div>
-       <div class="nav"><span>1 / ${p.fotos.length}</span><button type="button" data-dir="-1" aria-label="Foto anterior">‹</button><button type="button" data-dir="1" aria-label="Foto siguiente">›</button></div>`
-    : `<div class="noph"><b>${esc(p.clave[0][0])}</b><span>Las fotos están en nuestra publicación de TikTok</span><a class="btn btn-ink" href="${p.tiktok}" target="_blank" rel="noopener">Ver fotos en TikTok</a></div>`;
-  const mapa = p.mapa
-    ? `<div class="map"><iframe title="Mapa: ${esc(p.mapa.nombre)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-         src="https://maps.google.com/maps?q=${p.mapa.lat},${p.mapa.lng}&z=16&output=embed"></iframe>
-         <p>${esc(p.mapa.nombre)}</p>
-         <div class="acts"><a class="btn btn-tone" href="https://www.google.com/maps/search/?api=1&query=${p.mapa.lat},${p.mapa.lng}" target="_blank" rel="noopener">Abrir en Google Maps</a>
-         <a class="btn btn-tone" href="https://waze.com/ul?ll=${p.mapa.lat},${p.mapa.lng}&navigate=yes" target="_blank" rel="noopener">Ir con Waze</a></div></div>`
-    : `<div class="map nomap"><p>Te compartimos la ubicación exacta al agendar tu visita.</p></div>`;
-  return `<article class="listing rv" id="prop-${p.id}">
-    <div class="gal">${gal}${p.cond ? `<span class="cond">${esc(p.cond)}</span>` : ""}</div>
-    <div>
-      <h3>${esc(p.titulo)}</h3>
-      <p class="where"><b class="kind">${esc(p.tipo)} en ${p.op}</b> · ${[p.zona, p.lugar].filter(Boolean).map(esc).join(" · ")}</p>
-      <div class="price">${precio} <small>${esc(p.nota)}</small></div>
-      <p class="cod">Código ${esc(p.cod)}</p>
-      <ul class="specs">${p.clave.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
-      <div class="acts">
-        <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(`Hola, me interesa la propiedad ${p.cod}: ${label(p)} (${precio} ${p.nota}).`)}">Preguntar por esta propiedad</a>
-        <button class="btn btn-tone" type="button" data-cita="${p.id}">Agendar visita</button>
-      </div>
-    </div>
-    <details class="more">
-      <summary>Ver todos los detalles${p.mapa ? " y la ubicación" : ""}</summary>
-      <div class="more-in">
-        <div class="groups">${p.grupos.map(([t,l])=>`<div><h4>${esc(t)}</h4><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>
-        ${mapa}
-      </div>
-    </details>
-  </article>`;
-}
-
-// --- filtros ---
+// --- buscador ---
 const F = {op:"", tipo:"", zona:"", max:""};
-const uniq = k => [...new Set(PROPS.map(p => p[k]))].sort();
+const uniq = k => [...new Set(PROPS.map(p => p[k]))].filter(Boolean).sort();
 uniq("tipo").forEach(t => $("#f-tipo").add(new Option(t, t)));
-uniq("zona").filter(Boolean).forEach(z => $("#f-zona").add(new Option(z, z)));
+uniq("zona").forEach(z => $("#f-zona").add(new Option(z, z)));
 const visibles = () => PROPS.filter(p => (!F.op || p.op===F.op) && (!F.tipo || p.tipo===F.tipo) && (!F.zona || p.zona===F.zona) && (!F.max || usd(p) <= +F.max));
 
 function pintar(){
   const L = visibles();
   $("#count").textContent = `${L.length} ${L.length===1 ? "propiedad" : "propiedades"}`;
   $("#quitar").hidden = !(F.op || F.tipo || F.zona || F.max);
-  $("#lista").innerHTML = L.length ? L.map(ficha).join("") :
-    `<div class="empty"><h3>Aún no tenemos algo así publicado</h3><p>Dinos qué buscas y te escribimos por WhatsApp cuando tengamos una opción que encaje.</p><a class="btn btn-ink" href="#te-ayudamos">Cuéntanos qué buscas</a></div>`;
-  carruseles(); revelar($("#lista")); pines(L);
+  $("#lista").innerHTML = L.length ? L.map(tarjeta).join("") :
+    `<div class="empty" style="grid-column:1/-1"><h3>Aún no tenemos algo así publicado</h3><p>Dinos qué buscas y te escribimos por WhatsApp cuando tengamos una opción que encaje.</p><a class="btn btn-ink" href="#te-ayudamos">Cuéntanos qué buscas</a></div>`;
+  revelar($("#lista")); pines(L);
 }
 document.querySelectorAll("[data-op]").forEach(b => b.onclick = () => {
   F.op = b.dataset.op; document.querySelectorAll("[data-op]").forEach(x => x.setAttribute("aria-pressed", x===b)); pintar();
@@ -500,19 +198,7 @@ $("#f-precio").onchange = e => { F.max = e.target.value; pintar(); };
 $("#filtros").onsubmit = e => { e.preventDefault(); $("#propiedades").scrollIntoView({behavior:"smooth"}); };
 $("#quitar").onclick = () => { $("#filtros").reset(); Object.assign(F,{op:"",tipo:"",zona:"",max:""}); document.querySelectorAll("[data-op]").forEach(x => x.setAttribute("aria-pressed", x.dataset.op==="")); pintar(); };
 $("#cambiar").onclick = () => { $("#buscador").open = true; };
-if (matchMedia("(min-width: 861px)").matches) $("#buscador").open = true;   // en escritorio el buscador aparece abierto
-
-// --- carrusel ---
-function carruseles(){
-  document.querySelectorAll(".gal").forEach(g => {
-    const tr = g.querySelector(".track"); if(!tr) return;
-    const lab = g.querySelector(".nav span"), n = tr.children.length;
-    const idx = () => Math.round(tr.scrollLeft / tr.clientWidth);
-    g.querySelectorAll("[data-dir]").forEach(b => b.onclick = () =>
-      tr.scrollTo({left: ((idx() + +b.dataset.dir + n) % n) * tr.clientWidth, behavior:"smooth"}));
-    tr.addEventListener("scroll", () => lab.textContent = `${idx()+1} / ${n}`, {passive:true});
-  });
-}
+if (matchMedia("(min-width: 861px)").matches) $("#buscador").open = true;   // en escritorio el buscador va abierto sobre la foto
 
 // --- mapa general (OpenStreetMap) ---
 let mapa, capa;
@@ -521,7 +207,6 @@ if (window.L) {
   mapa = L.map("mapa-general", {scrollWheelZoom:false, dragging:!L.Browser.mobile, tap:false}).setView([14.605, -90.515], 13);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mapa);
   capa = L.layerGroup().addTo(mapa);
-  // recalcula el tamaño cuando el mapa aparece (fuentes y fotos cambian el alto de la página)
   new IntersectionObserver(es => es[0].isIntersecting && mapa.invalidateSize()).observe($("#mapa-general"));
   addEventListener("load", () => mapa.invalidateSize());
 } else {
@@ -534,22 +219,10 @@ function pines(lista){
   capa.clearLayers();
   const con = lista.filter(p => p.mapa);
   con.forEach(p => L.marker([p.mapa.lat, p.mapa.lng], {icon: L.divIcon({className:"", html:`<span class="pin">${money(p.precio,p.mon)}</span>`})})
-    .bindPopup(`<b>${esc(p.titulo)}</b><small style="color:#55524c">Código ${esc(p.cod)}</small><br>${esc(p.zona || "")} · ${money(p.precio,p.mon)} ${esc(p.nota)}<br><a href="#prop-${p.id}">Ver la propiedad</a>`).addTo(capa));
+    .bindPopup(`<b>${esc(p.titulo)}</b>${esc(p.zona || "")} · ${money(p.precio,p.mon)} ${esc(p.nota)}<br><a href="${enlace(p)}">Ver la propiedad</a>`).addTo(capa));
   if (con.length > 1) mapa.fitBounds(con.map(p => [p.mapa.lat, p.mapa.lng]), {padding:[60,60], maxZoom:15});
   else if (con.length === 1) mapa.setView([con[0].mapa.lat, con[0].mapa.lng], 15);
 }
-
-// --- agendar visita (filtro básico: forma de pago y presupuesto) ---
-let cur;
-document.addEventListener("click", e => {
-  const b = e.target.closest("[data-cita]"); if(!b) return;
-  cur = PROPS.find(p => p.id == b.dataset.cita);
-  $("#f-prop").textContent = `${label(cur)} · Código ${cur.cod}`;
-  $("#f-dia").min = new Date().toISOString().slice(0,10);
-  $("#cita").showModal();
-});
-$("#f-x").onclick = () => $("#cita").close();
-$("#f").onsubmit = () => window.open(wa(`Hola, soy ${$("#f-nom").value}. Quiero visitar la propiedad ${cur.cod}: ${label(cur)}.\nDía: ${$("#f-dia").value}\nPago: ${$("#f-pago").value}\nPresupuesto: ${$("#f-pres").value || "—"}`), "_blank");
 
 // --- te ayudamos: arma el mensaje con lo que busca el cliente ---
 const op = () => document.querySelector("[name=op]:checked").value;
@@ -572,18 +245,8 @@ document.querySelectorAll("[data-ba]").forEach(b => b.onclick = () => {
   baR.value = 50; ba.style.setProperty("--pos","50%");
 });
 
-// --- entradas: títulos palabra por palabra, el resto sube suave ---
-document.querySelectorAll(".split").forEach(h => {
-  h.innerHTML = h.textContent.trim().split(/\s+/).map((w,i) => `<span class="w"><span style="--i:${i}">${esc(w)}</span></span>`).join(" ");
-});
-const io = new IntersectionObserver(es => es.forEach(x => { if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); } }), {rootMargin:"0px 0px 15% 0px"});
-function revelar(root){ root.querySelectorAll(".rv:not(.in)").forEach((el,i) => { el.style.transitionDelay = (i%4)*70 + "ms"; io.observe(el); }); }
-revelar(document);
+revelar();
 pintar();
-// respaldo: si el navegador no avisa del scroll, nada se queda oculto
-const barrer = () => document.querySelectorAll(".rv:not(.in)").forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); });
-let tick; addEventListener("scroll", () => { clearTimeout(tick); tick = setTimeout(barrer, 400); }, {passive:true});
-addEventListener("load", () => setTimeout(barrer, 1200));
 </script>
 </body>
 </html>
