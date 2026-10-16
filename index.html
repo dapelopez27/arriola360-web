@@ -97,6 +97,7 @@ section{padding-top:var(--gap)}
 .where{font-weight:500;margin:0 0 14px;color:var(--mut)}
 .price{font:600 clamp(28px,2.6vw,36px)/1 var(--serif)}
 .price small{font:500 15px var(--sans);color:var(--mut)}
+.cod{margin:8px 0 0;font-size:13px;color:#8a867d;letter-spacing:.02em}
 .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0;padding:0;list-style:none}
 .specs li{background:var(--tone);padding:12px 14px}
 .specs b{display:block;font:600 22px/1.1 var(--serif)}
@@ -395,9 +396,9 @@ const fotos = (dir, n, portada) => {           // portada primero, luego las dem
   const all = Array.from({length:n}, (_,i) => `assets/${dir}/${String(i+1).padStart(2,"0")}.jpg`);
   return [all[portada-1], ...all.filter((_,i) => i !== portada-1)];
 };
-// op: "renta" o "venta" · tipo: Apartamento, Casa, Bodega, Local, Oficina, Terreno · mapa: null si aún no hay ubicación
+// cod: código interno (ARR-1xx), también va en el WhatsApp · op: "renta" o "venta" · tipo: Apartamento, Casa, Bodega, Local, Oficina, Terreno · mapa: null si aún no hay ubicación
 const PROPS = [
-  {id:1, op:"renta", tipo:"Bodega", titulo:"Nave industrial", cond:"Nueva", zona:null, lugar:"Ubicación al agendar tu visita",
+  {id:1, cod:"ARR-101", op:"renta", tipo:"Bodega", titulo:"Nave industrial", cond:"Nueva", zona:null, lugar:"Ubicación al agendar tu visita",
    precio:9500, mon:"$", nota:"al mes, mantenimiento incluido",
    clave:[["1,463 m²","de construcción"],["800 m²","de bodega"],["9 m","de altura al hombro"],["23","parqueos"]],
    grupos:[
@@ -408,7 +409,7 @@ const PROPS = [
      ["Condiciones",["Construcción nueva","Renta de $9,500 al mes","Mantenimiento incluido"]]],
    mapa:null,
    fotos:fotos("alquiler-bodega-industrial",23,3)},
-  {id:2, op:"renta", tipo:"Apartamento", titulo:"Apartamento amueblado", zona:"Zona 10", lugar:"Edificio Moretti, 10a avenida y 15 calle",
+  {id:2, cod:"ARR-102", op:"renta", tipo:"Apartamento", titulo:"Apartamento amueblado", zona:"Zona 10", lugar:"Edificio Moretti, 10a avenida y 15 calle",
    precio:850, mon:"$", nota:"al mes, mantenimiento incluido",
    clave:[["72 m²","de construcción"],["1","habitación"],["1","baño completo"],["Amueblado","listo para vivir"]],
    grupos:[
@@ -419,7 +420,7 @@ const PROPS = [
      ["Condiciones",["Renta de $850 al mes","Incluye cuota de mantenimiento","Precio fijo"]]],
    mapa:{lat:14.5937808, lng:-90.5083938, nombre:"Edificio Moretti, 10a avenida y 15 calle, zona 10"},
    fotos:fotos("alquiler-apartamento-zona10",18,4)},
-  {id:3, op:"renta", tipo:"Apartamento", titulo:"Apartamento con balcón", zona:"Zona 10", lugar:"Edificio AVIA",
+  {id:3, cod:"ARR-103", op:"renta", tipo:"Apartamento", titulo:"Apartamento con balcón", zona:"Zona 10", lugar:"Edificio AVIA",
    precio:1100, mon:"$", nota:"al mes + IVA, mantenimiento incluido",
    clave:[["68 m²","de construcción"],["1","habitación"],["1","baño completo"],["1","parqueo + bodega"]],
    grupos:[
@@ -458,9 +459,10 @@ function ficha(p){
       <h3>${esc(p.titulo)}</h3>
       <p class="where"><b class="kind">${esc(p.tipo)} en ${p.op}</b> · ${[p.zona, p.lugar].filter(Boolean).map(esc).join(" · ")}</p>
       <div class="price">${precio} <small>${esc(p.nota)}</small></div>
+      <p class="cod">Código ${esc(p.cod)}</p>
       <ul class="specs">${p.clave.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
       <div class="acts">
-        <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(`Hola, me interesa: ${label(p)} (${precio} ${p.nota}).`)}">Preguntar por esta propiedad</a>
+        <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(`Hola, me interesa la propiedad ${p.cod}: ${label(p)} (${precio} ${p.nota}).`)}">Preguntar por esta propiedad</a>
         <button class="btn btn-tone" type="button" data-cita="${p.id}">Agendar visita</button>
       </div>
     </div>
@@ -532,7 +534,7 @@ function pines(lista){
   capa.clearLayers();
   const con = lista.filter(p => p.mapa);
   con.forEach(p => L.marker([p.mapa.lat, p.mapa.lng], {icon: L.divIcon({className:"", html:`<span class="pin">${money(p.precio,p.mon)}</span>`})})
-    .bindPopup(`<b>${esc(p.titulo)}</b>${esc(p.zona || "")} · ${money(p.precio,p.mon)} ${esc(p.nota)}<br><a href="#prop-${p.id}">Ver la propiedad</a>`).addTo(capa));
+    .bindPopup(`<b>${esc(p.titulo)}</b><small style="color:#55524c">Código ${esc(p.cod)}</small><br>${esc(p.zona || "")} · ${money(p.precio,p.mon)} ${esc(p.nota)}<br><a href="#prop-${p.id}">Ver la propiedad</a>`).addTo(capa));
   if (con.length > 1) mapa.fitBounds(con.map(p => [p.mapa.lat, p.mapa.lng]), {padding:[60,60], maxZoom:15});
   else if (con.length === 1) mapa.setView([con[0].mapa.lat, con[0].mapa.lng], 15);
 }
@@ -542,12 +544,12 @@ let cur;
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-cita]"); if(!b) return;
   cur = PROPS.find(p => p.id == b.dataset.cita);
-  $("#f-prop").textContent = label(cur);
+  $("#f-prop").textContent = `${label(cur)} · Código ${cur.cod}`;
   $("#f-dia").min = new Date().toISOString().slice(0,10);
   $("#cita").showModal();
 });
 $("#f-x").onclick = () => $("#cita").close();
-$("#f").onsubmit = () => window.open(wa(`Hola, soy ${$("#f-nom").value}. Quiero visitar: ${label(cur)}.\nDía: ${$("#f-dia").value}\nPago: ${$("#f-pago").value}\nPresupuesto: ${$("#f-pres").value || "—"}`), "_blank");
+$("#f").onsubmit = () => window.open(wa(`Hola, soy ${$("#f-nom").value}. Quiero visitar la propiedad ${cur.cod}: ${label(cur)}.\nDía: ${$("#f-dia").value}\nPago: ${$("#f-pago").value}\nPresupuesto: ${$("#f-pres").value || "—"}`), "_blank");
 
 // --- te ayudamos: arma el mensaje con lo que busca el cliente ---
 const op = () => document.querySelector("[name=op]:checked").value;
