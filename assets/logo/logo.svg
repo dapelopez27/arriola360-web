@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-label="Arriola 360">
+  <style>@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&amp;display=swap');
+  .w{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}</style>
+  <g transform="translate(200 0)">
+    <!-- arco dorado: la vuelta completa (360) -->
+    <path d="M58 8 A52 52 0 1 1 30 104" fill="none" stroke="#b08a2e" stroke-width="5" stroke-linecap="round"/>
+    <!-- A: pierna fina y pierna gruesa -->
+    <path d="M57 10 L61 10 L29 104 L24 104 Z" fill="#141414"/>
+    <path d="M55 10 L66 10 L101 104 L84 104 Z" fill="#141414"/>
+    <path d="M14 104 H40" stroke="#141414" stroke-width="3"/>
+    <path d="M76 104 H110" stroke="#141414" stroke-width="3"/>
+    <!-- trazo dorado que cruza la A -->
+    <path d="M10 92 C30 66 70 54 112 56 C74 60 40 72 10 92 Z" fill="#b08a2e"/>
+    <!-- ventana de la casa -->
+    <g fill="#b08a2e"><rect x="48" y="74" width="6" height="6"/><rect x="56" y="74" width="6" height="6"/><rect x="48" y="82" width="6" height="6"/><rect x="56" y="82" width="6" height="6"/></g>
+  </g>
+  <text class="w" x="260" y="200" text-anchor="middle" font-size="76" letter-spacing="10" fill="#141414">ARRIOLA</text>
+  <path d="M110 240 H200 M320 240 H410" stroke="#b08a2e" stroke-width="2"/>
+  <text class="w" x="260" y="256" text-anchor="middle" font-size="50" letter-spacing="8" fill="#b08a2e">360</text>
+</svg>

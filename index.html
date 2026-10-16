@@ -3,166 +3,367 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Arriola360 · Inmobiliaria</title>
-<meta name="description" content="Venta, alquiler y remodelación de propiedades. Escríbenos por WhatsApp.">
+<title>Arriola 360 · Propiedades en Guatemala</title>
+<meta name="description" content="Venta, alquiler y remodelación de propiedades en Guatemala. Fotos, precios y citas por WhatsApp.">
+<meta property="og:title" content="Arriola 360 · Propiedades en Guatemala">
+<meta property="og:description" content="Venta, alquiler y remodelación. Fotos, precios y citas por WhatsApp.">
+<meta property="og:image" content="assets/alquiler-apartamento-zona10/04.jpg">
+<link rel="icon" href="assets/logo/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#faf8f2;--ink:#1c1c1a;--mut:#6b6b66;--card:#fff;--acc:#8a6a14;--gold:#b8923a;--wa:#25d366;--line:#e4e2da}
-@media(prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f1f0ea;--mut:#a3a39b;--card:#1f1f1d;--acc:#d4af37;--gold:#d4af37;--line:#333330}}
-*{box-sizing:border-box}
-body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
-header{padding:28px 16px 12px;max-width:960px;margin:auto}
-h1{margin:0;font-size:1.6rem}
-header p{color:var(--mut);margin:.25rem 0 0}
-nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-nav div{max-width:960px;margin:auto;display:flex;gap:8px;padding:10px 16px;overflow-x:auto}
-nav button{flex:1;white-space:nowrap;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
-nav button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--gold)}
-main{max-width:960px;margin:auto;padding:16px}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-.ph{aspect-ratio:4/3;background:linear-gradient(135deg,#b9d8cf,#e8dfc9);display:grid;place-items:center;font-size:3rem;overflow:hidden}
-.ph{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;align-items:center;justify-content:center}.ph::-webkit-scrollbar{display:none}.ph img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:center}.ph-w{position:relative}.ph-w small{position:absolute;right:8px;bottom:8px;background:#000a;color:#fff;padding:2px 8px;border-radius:99px;font-size:.75rem}header img{height:96px;display:block;margin:0 auto}header{text-align:center}
-.body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
-.price{font-size:1.25rem;font-weight:700;color:var(--acc)}
-.meta{color:var(--mut);font-size:.9rem}
-.row{display:flex;gap:8px;margin-top:auto;padding-top:8px;flex-wrap:wrap}
-.btn{display:inline-block;padding:10px 14px;border-radius:10px;border:0;font:inherit;font-weight:600;text-decoration:none;cursor:pointer;text-align:center}
-.wa{background:var(--wa);color:#04210f;flex:1}
-.sec{background:var(--card);color:var(--ink);border:1px solid var(--line)}
-dialog{border:0;border-radius:16px;padding:20px;max-width:420px;width:calc(100% - 32px);background:var(--card);color:var(--ink)}
-dialog::backdrop{background:#0008}
-label{display:block;font-size:.9rem;color:var(--mut);margin:10px 0 4px}
-input,select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--bg);color:var(--ink)}
-section.box{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
-section.box h2{margin-top:0}
-.calc{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-table{width:100%;border-collapse:collapse;margin-top:12px}
-td,th{padding:8px;border-bottom:1px solid var(--line);text-align:right}
-th:first-child,td:first-child{text-align:left}
-.fab{position:fixed;right:16px;bottom:16px;z-index:9;background:var(--wa);color:#04210f;padding:14px 18px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px #0004}
-footer{text-align:center;color:var(--mut);padding:32px 16px 90px;font-size:.85rem}
+:root{
+  --bg:#fff; --tone:#f2f2f0; --ink:#141414; --mut:#55524c; --gold:#b08a2e; --gold-ink:#8a6a1c;
+  --dark:#141414; --on-dark:#f2f2f0; --wa:#147a3d;
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --m:clamp(16px,4vw,32px); --gap:clamp(88px,10vw,150px);
+}
+*{box-sizing:border-box;font-variant-numeric:lining-nums!important} /* el atajo font: la reinicia en cada elemento */
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;font-feature-settings:"lnum" 1}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:1;margin:0}
+.wrap{max-width:1280px;margin:auto;padding-left:var(--m);padding-right:var(--m)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:14px 26px;border-radius:999px;border:0;font:600 16px/1 var(--sans);text-decoration:none;cursor:pointer;transition:transform .15s,background-color .15s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#0f6331}
+.btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#333}
+.btn-tone{background:var(--tone);color:var(--ink)}.btn-tone:hover{background:#e6e6e3}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* barra */
+.bar{position:sticky;top:0;z-index:20;background:var(--bg)}
+[id]{scroll-margin-top:84px}
+.bar .wrap{display:flex;align-items:center;gap:24px;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.brand svg{width:38px;height:38px}
+.brand b{font:600 22px/1 var(--serif);letter-spacing:.14em}
+.brand b span{color:var(--gold)}
+.bar nav{display:flex;gap:22px}
+.bar nav a{text-decoration:none;font-weight:500;font-size:15px}
+.bar nav a:hover{color:var(--gold-ink)}
+@media(max-width:860px){.bar nav{display:none}.bar .btn{padding:11px 18px;font-size:15px}}
+
+/* portada */
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(24px,5vw,64px)}
+.hero h1{font-size:clamp(52px,7vw,104px)}
+.hero p{font-size:clamp(18px,1.6vw,21px);max-width:30ch;margin:28px 0 32px}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap}
+.hero figure{margin:0;aspect-ratio:4/5;overflow:hidden}
+.hero figure img{width:100%;height:100%;object-fit:cover}
+.hero figcaption{font-size:14px;color:var(--mut);margin-top:10px}
+.facts{display:flex;gap:clamp(24px,5vw,72px);margin-top:48px;flex-wrap:wrap}
+.facts div{font:600 clamp(34px,3.6vw,48px)/1 var(--serif)}
+.facts small{display:block;font:500 15px/1.3 var(--sans);color:var(--mut);margin-top:6px}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.hero figure{aspect-ratio:4/3;order:-1;margin:0 calc(var(--m)*-1)}.hero figcaption{padding:0 var(--m)}}
+
+section{padding-top:var(--gap)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.head h2{font-size:clamp(44px,6vw,88px)}
+.head p{max-width:42ch;margin:0;color:var(--mut)}
+
+/* fichas */
+.listing{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(56px,6vw,96px)}
+.listing:nth-child(even) .gal{order:2}
+.gal{position:relative;background:var(--tone)}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:3/2}
+.track::-webkit-scrollbar{display:none}
+.track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+.gal .nav{position:absolute;inset:auto 12px 12px auto;display:flex;gap:8px;align-items:center}
+.gal .nav button{width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:20px;cursor:pointer}
+.gal .nav span{background:#141414cc;color:#fff;font-size:14px;padding:6px 12px;border-radius:999px}
+.noph{aspect-ratio:3/2;display:grid;place-content:center;justify-items:center;text-align:center;gap:12px;padding:24px}
+.noph b{font:600 clamp(64px,9vw,128px)/1 var(--serif)}
+.listing h3{font-size:clamp(34px,3.6vw,52px);margin:0 0 8px}
+.price{font:600 clamp(28px,2.6vw,36px)/1 var(--serif);color:var(--gold-ink)}
+.price small{font:500 15px var(--sans);color:var(--mut)}
+.where{font-weight:600;margin:0 0 14px}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0;padding:0;list-style:none}
+.specs li{background:var(--tone);padding:12px 14px}
+.specs b{display:block;font:600 22px/1.1 var(--serif)}
+.specs span{font-size:14px;color:var(--mut)}
+.listing .acts{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:860px){.listing{grid-template-columns:1fr}.listing:nth-child(even) .gal{order:0}.gal{margin:0 calc(var(--m)*-1)}}
+
+/* venta + calculadora */
+.sell{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
+.sell .txt p{font-size:19px;max-width:40ch}
+.calc{background:var(--tone);padding:clamp(20px,3vw,40px)}
+.calc h3{font-size:clamp(30px,3vw,42px);margin-bottom:20px}
+.calc label{display:block;font-size:15px;font-weight:500;margin:14px 0 6px}
+.calc .row{display:grid;grid-template-columns:1fr auto;gap:10px}
+.calc input,.calc select,dialog input,dialog select{width:100%;padding:12px 14px;font:inherit;border:1px solid #d8d3c8;background:#fff;color:var(--ink);border-radius:0}
+.calc input[type=range]{padding:0;border:0;background:none;accent-color:var(--gold)}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+.res div{background:#fff;padding:14px}
+.res b{display:block;font:600 clamp(24px,2.4vw,32px)/1.1 var(--serif)}
+.res span{font-size:14px;color:var(--mut)}
+.calc .note{font-size:14px;color:var(--mut);margin:14px 0 0}
+@media(max-width:860px){.sell{grid-template-columns:1fr}.res{grid-template-columns:1fr}}
+
+/* remodelación (Construservicios) */
+.remo{background:var(--dark);color:var(--on-dark);margin-top:var(--gap);padding:var(--gap) 0}
+.remo .head p{color:#c9c4b8}
+.ba{margin:0 0 56px}
+.ba img{width:100%}
+.ba figcaption{margin-top:12px;color:#c9c4b8;font-size:15px}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,3vw,40px);margin-bottom:72px}
+.svc h3{font-size:28px;margin-bottom:10px;color:#fff}
+.svc p{margin:0;color:#c9c4b8;font-size:16px}
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.works figure{margin:0}
+.works img{aspect-ratio:12/5;width:100%;object-fit:cover}
+.works figcaption{font-size:15px;margin-top:8px;color:#c9c4b8}
+.remo .acts{margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.remo .acts p{margin:0;color:#c9c4b8}
+@media(max-width:860px){.svc{grid-template-columns:1fr 1fr}.works{grid-template-columns:1fr}}
+
+/* cierre */
+footer{padding:var(--gap) 0 120px}
+footer .big{font:600 clamp(44px,9.4vw,136px)/.9 var(--serif);letter-spacing:.06em;white-space:nowrap;margin:0 0 40px}
+footer .big span{color:var(--gold)}
+footer .cols{display:flex;gap:clamp(24px,6vw,96px);flex-wrap:wrap}
+footer .cols p{margin:0}
+footer .cols b{display:block;font-size:14px;color:var(--mut);font-weight:500}
+
+.fab{position:fixed;right:16px;bottom:16px;z-index:30}
+
+dialog{border:0;padding:clamp(20px,4vw,32px);max-width:440px;width:calc(100% - 32px);box-shadow:0 20px 60px #0004} /* taste-skill-ignore: diálogo flotante */
+dialog::backdrop{background:#141414aa}
+dialog h3{font-size:34px}
+dialog label{display:block;font-size:15px;font-weight:500;margin:14px 0 6px}
+dialog .acts{display:flex;gap:10px;margin-top:22px}
+
+/* movimiento */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.hero figure img{animation:drift 18s ease-out both}
+@keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.hero figure img{animation:none}html{scroll-behavior:auto}}
 </style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<header>
-  <img src="assets/logo/logo.jpg" alt="Arriola 360 · Venta, renta, inversión inmobiliaria">
-  <h1 hidden>Arriola360</h1>
-  <p>Venta · Alquiler · Remodelación. Mira, elige y escríbenos por WhatsApp.</p>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 120 120">
+    <path d="M58 8 A52 52 0 1 1 30 104" fill="none" stroke="#b08a2e" stroke-width="6" stroke-linecap="round"/>
+    <path d="M57 10 L61 10 L29 104 L24 104 Z" fill="currentColor"/>
+    <path d="M55 10 L66 10 L101 104 L84 104 Z" fill="currentColor"/>
+    <path d="M14 104 H40 M76 104 H110" stroke="currentColor" stroke-width="3"/>
+    <path d="M10 92 C30 66 70 54 112 56 C74 60 40 72 10 92 Z" fill="#b08a2e"/>
+    <g fill="#b08a2e"><rect x="48" y="74" width="6" height="6"/><rect x="56" y="74" width="6" height="6"/><rect x="48" y="82" width="6" height="6"/><rect x="56" y="82" width="6" height="6"/></g>
+  </symbol>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Arriola 360, inicio"><svg><use href="#mark"/></svg><b>ARRIOLA <span>360</span></b></a>
+    <nav aria-label="Secciones">
+      <a href="#alquiler">Alquiler</a><a href="#venta">Venta</a><a href="#remodelacion">Remodelación</a><a href="#calculadora">Calculadora</a>
+    </nav>
+    <a class="btn btn-wa" data-wa="Hola Mario, vi su página y quiero información." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
 </header>
 
-<nav><div role="tablist" id="tabs">
-  <button role="tab" data-t="venta" aria-selected="false">Venta</button>
-  <button role="tab" data-t="alquiler" aria-selected="true">Alquiler</button>
-  <button role="tab" data-t="remodelacion" aria-selected="false">Remodelación</button>
-</div></nav>
-
-<main>
-  <div id="list" class="grid"></div>
-
-  <section class="box" id="calc">
-    <h2>Calculadora de financiamiento</h2>
-    <div class="calc">
-      <div><label>Precio</label><input id="c-precio" type="number" value="1200000" min="0"></div>
-      <div><label>Enganche %</label><input id="c-eng" type="number" value="20" min="0" max="100"></div>
-      <div><label>Tasa anual %</label><input id="c-tasa" type="number" value="7" step="0.1" min="0"></div>
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <h1 class="rv">Propiedades en Guatemala</h1>
+      <p class="rv">Venta, alquiler y remodelación. Mira fotos y precios reales, y agenda tu visita por WhatsApp con Mario Arriola.</p>
+      <div class="acts rv">
+        <a class="btn btn-ink" href="#alquiler">Ver propiedades</a>
+        <a class="btn btn-tone" href="#calculadora">Calcular mi cuota</a>
+      </div>
     </div>
-    <table><thead><tr><th>Plazo</th><th>Cuota mensual</th><th>Total a pagar</th></tr></thead><tbody id="c-out"></tbody></table>
-    <p class="meta">Cálculo de referencia. La cuota real depende del banco.</p>
+    <figure>
+      <img src="assets/alquiler-apartamento-zona10/04.jpg" alt="Comedor con vista a la ciudad, apartamento en Edificio Moretti, zona 10" fetchpriority="high">
+      <figcaption>Apartamento en Edificio Moretti, zona 10. En alquiler.</figcaption>
+    </figure>
+  </div>
+
+  <section id="alquiler" class="wrap">
+    <div class="head rv">
+      <h2>En alquiler ahora</h2>
+      <p>Desliza las fotos de cada propiedad. Los precios son mensuales.</p>
+    </div>
+    <div id="list-alquiler"></div>
+  </section>
+
+  <section id="venta" class="wrap">
+    <div class="sell">
+      <div class="txt">
+        <div class="head rv" style="margin-bottom:24px"><h2>¿Compras o vendes?</h2></div>
+        <p class="rv">Estamos preparando las propiedades en venta. Si buscas algo, dinos la zona y tu presupuesto, y te mandamos opciones.</p>
+        <p class="rv">Si tienes una propiedad para vender o alquilar, mándanos fotos desde tu teléfono. Nosotros la promocionamos en TikTok, Facebook e Instagram.</p>
+        <div class="acts rv" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+          <a class="btn btn-wa" data-wa="Hola Mario, busco una propiedad para comprar. Zona: ___ Presupuesto: ___" target="_blank" rel="noopener">Busco propiedad</a>
+          <a class="btn btn-tone" data-wa="Hola Mario, tengo una propiedad para vender o alquilar. Está en: ___" target="_blank" rel="noopener">Quiero vender</a>
+        </div>
+      </div>
+      <div class="calc rv" id="calculadora">
+        <h3>¿Cuánto pagarías al mes?</h3>
+        <label for="c-precio">Precio de la propiedad</label>
+        <div class="row">
+          <input id="c-precio" type="number" inputmode="numeric" value="1200000" min="0" step="10000">
+          <select id="c-mon" aria-label="Moneda"><option>Q</option><option>$</option></select>
+        </div>
+        <label for="c-eng">Enganche: <output id="o-eng">20</output>%</label>
+        <input id="c-eng" type="range" min="0" max="60" value="20">
+        <label for="c-tasa">Tasa anual: <output id="o-tasa">7</output>%</label>
+        <input id="c-tasa" type="range" min="4" max="14" step="0.25" value="7">
+        <div class="res" id="c-out" aria-live="polite"></div>
+        <p class="note" id="c-note"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="remodelacion" class="remo">
+    <div class="wrap">
+      <div class="head rv">
+        <h2>Remodelamos antes de vender</h2>
+        <p>Una propiedad bien presentada se vende y se alquila más rápido. Con Construservicios, nuestra constructora, hacemos la obra completa.</p>
+      </div>
+      <figure class="ba rv">
+        <img src="assets/remodelacion/obra-34.jpg" alt="Local comercial en Portales Mall, antes en obra gris y después terminado" loading="lazy">
+        <figcaption>Local comercial en Portales Mall: de obra gris a tienda terminada.</figcaption>
+      </figure>
+      <div class="svc">
+        <div class="rv"><h3>Diseño</h3><p>Planos, renders, cálculo estructural y diseño de interiores.</p></div>
+        <div class="rv"><h3>Construcción</h3><p>Casas, apartamentos, oficinas, bodegas y movimiento de tierras.</p></div>
+        <div class="rv"><h3>Acabados</h3><p>Pisos, tablayeso, cocinas, baños, pintura y ventanería.</p></div>
+        <div class="rv"><h3>Instalaciones</h3><p>Electricidad, agua, aire acondicionado y fibra óptica.</p></div>
+      </div>
+      <div class="works">
+        <figure class="rv"><img src="assets/remodelacion/obra-06.jpg" alt="Chalet con piscina en Monterrico" loading="lazy"><figcaption>Chalet en Monterrico, de cero a terminado</figcaption></figure>
+        <figure class="rv"><img src="assets/remodelacion/obra-09.jpg" alt="Vivienda en Cayalá" loading="lazy"><figcaption>Vivienda en Cayalá, zona 16</figcaption></figure>
+        <figure class="rv"><img src="assets/remodelacion/obra-18.jpg" alt="Oficinas remodeladas en Edificio Vasanta" loading="lazy"><figcaption>Oficinas en Edificio Vasanta, zona 10</figcaption></figure>
+        <figure class="rv"><img src="assets/remodelacion/obra-27.jpg" alt="Baños remodelados en el Palacio Nacional" loading="lazy"><figcaption>Baños del Palacio Nacional</figcaption></figure>
+        <figure class="rv"><img src="assets/remodelacion/obra-39.jpg" alt="Cocinas a la medida" loading="lazy"><figcaption>Cocinas a la medida</figcaption></figure>
+        <figure class="rv"><img src="assets/remodelacion/obra-38.jpg" alt="Pérgolas" loading="lazy"><figcaption>Pérgolas y terrazas</figcaption></figure>
+      </div>
+      <div class="acts rv">
+        <a class="btn btn-wa" data-wa="Hola Mario, quiero cotizar una remodelación. Es para: ___" target="_blank" rel="noopener">Cotizar remodelación</a>
+        <p>Cotización sin costo. Instagram: @construserviciosgt</p>
+      </div>
+    </div>
   </section>
 </main>
 
-<footer>© Arriola360 · Los precios y datos pueden cambiar sin previo aviso.</footer>
-<a class="fab" id="fab" target="_blank" rel="noopener">WhatsApp</a>
+<footer class="wrap">
+  <p class="big" aria-hidden="true">ARRIOLA <span>360</span></p>
+  <div class="cols">
+    <p><b>WhatsApp</b><a data-wa="Hola Mario, vi su página." target="_blank" rel="noopener">5413-4111</a></p>
+    <p><b>TikTok</b><a href="https://www.tiktok.com/@arriola360propiedades" target="_blank" rel="noopener">@arriola360propiedades</a></p>
+    <p><b>Oficina</b>Atención con cita previa</p>
+    <p><b>Remodelación</b>Construservicios</p>
+  </div>
+</footer>
+
+<a class="btn btn-wa fab" data-wa="Hola Mario, vi su página y quiero información." target="_blank" rel="noopener">WhatsApp</a>
 
 <dialog id="cita">
   <form method="dialog" id="f">
-    <h3 style="margin-top:0">Agendar cita</h3>
-    <p class="meta" id="f-prop"></p>
-    <label>Tu nombre</label><input id="f-nom" required>
-    <label>Día preferido</label><input id="f-dia" type="date" required>
-    <label>¿Cómo pensás pagar?</label>
+    <h3>Agendar visita</h3>
+    <p id="f-prop" style="color:var(--mut);margin:8px 0 0"></p>
+    <label for="f-nom">Tu nombre</label><input id="f-nom" required autocomplete="name">
+    <label for="f-dia">Día que prefieres</label><input id="f-dia" type="date" required>
+    <label for="f-pago">¿Cómo piensas pagar?</label>
     <select id="f-pago"><option>Contado</option><option>Financiamiento bancario</option><option>Aún no lo sé</option></select>
-    <label>Presupuesto aproximado</label><input id="f-pres" placeholder="Ej. 1,200,000">
-    <div class="row">
-      <button class="btn wa" type="submit">Enviar por WhatsApp</button>
-      <button class="btn sec" type="button" id="f-x">Cancelar</button>
+    <label for="f-pres">Presupuesto aproximado</label><input id="f-pres" inputmode="numeric" placeholder="Ej. $900 al mes">
+    <div class="acts">
+      <button class="btn btn-wa" type="submit">Enviar por WhatsApp</button>
+      <button class="btn btn-tone" type="button" id="f-x">Cancelar</button>
     </div>
   </form>
 </dialog>
 
 <script>
-// ===== Configuración: lo único que el cliente edita =====
-const WA = "50254134111";          // número de WhatsApp con código de país, sin + ni espacios
-const MONEDA = "Q";               // cambiar a "Q", "L", "MX$", etc.
-const PROPS = [                    // fotos: lista de rutas; mon: moneda de ese precio
-  {id:1,tipo:"alquiler",titulo:"Bodega industrial de alto nivel (nueva)",precio:9500,mon:"$",mensual:true,zona:"Club Mayan Golf",m2:1463,
-   desc:"Mantenimiento incluido · 800 m² de bodega + 200 m² de mezzanine · 23 parqueos · pozo propio · 9 m de altura",
-   fotos:["assets/alquiler-bodega-industrial/01.jpg","assets/alquiler-bodega-industrial/02.jpg","assets/alquiler-bodega-industrial/03.jpg","assets/alquiler-bodega-industrial/04.jpg","assets/alquiler-bodega-industrial/05.jpg","assets/alquiler-bodega-industrial/06.jpg","assets/alquiler-bodega-industrial/07.jpg","assets/alquiler-bodega-industrial/08.jpg","assets/alquiler-bodega-industrial/09.jpg","assets/alquiler-bodega-industrial/10.jpg","assets/alquiler-bodega-industrial/11.jpg","assets/alquiler-bodega-industrial/12.jpg","assets/alquiler-bodega-industrial/13.jpg","assets/alquiler-bodega-industrial/14.jpg","assets/alquiler-bodega-industrial/15.jpg","assets/alquiler-bodega-industrial/16.jpg","assets/alquiler-bodega-industrial/17.jpg","assets/alquiler-bodega-industrial/18.jpg","assets/alquiler-bodega-industrial/19.jpg","assets/alquiler-bodega-industrial/20.jpg","assets/alquiler-bodega-industrial/21.jpg","assets/alquiler-bodega-industrial/22.jpg","assets/alquiler-bodega-industrial/23.jpg"]},
-  {id:2,tipo:"alquiler",titulo:"Apartamento amueblado en Edificio Moretti",precio:850,mon:"$",mensual:true,zona:"Zona 10",hab:1,ban:1,m2:72,
-   desc:"Incluye cuota de servicios · gimnasio, piscina, salón social y BBQ lounge · precio no negociable",
-   fotos:["assets/alquiler-apartamento-zona10/01.jpg","assets/alquiler-apartamento-zona10/02.jpg","assets/alquiler-apartamento-zona10/03.jpg","assets/alquiler-apartamento-zona10/05.jpg","assets/alquiler-apartamento-zona10/06.jpg","assets/alquiler-apartamento-zona10/07.jpg","assets/alquiler-apartamento-zona10/08.jpg","assets/alquiler-apartamento-zona10/09.jpg","assets/alquiler-apartamento-zona10/10.jpg","assets/alquiler-apartamento-zona10/11.jpg","assets/alquiler-apartamento-zona10/12.jpg","assets/alquiler-apartamento-zona10/13.jpg","assets/alquiler-apartamento-zona10/14.jpg","assets/alquiler-apartamento-zona10/15.jpg","assets/alquiler-apartamento-zona10/16.jpg","assets/alquiler-apartamento-zona10/17.jpg","assets/alquiler-apartamento-zona10/18.jpg","assets/alquiler-apartamento-zona10/19.jpg"]},
-  {id:3,tipo:"venta",titulo:"Propiedades en venta",precio:0,mon:"Q",zona:"Próximamente",fotos:[],desc:"Escríbenos y te enviamos las opciones disponibles."},
-  {id:4,tipo:"remodelacion",titulo:"Construcción y remodelación",precio:0,zona:"Cotizamos sin costo",fotos:[],desc:"Remodelación, ingeniería y arquitectura. Cuéntanos qué necesitas."},
+// ===== Configuración: lo único que se edita para agregar propiedades =====
+const WA = "50254134111";   // WhatsApp de Mario, con código de país
+const fotos = (dir, n, portada) => {           // portada primero, luego las demás en orden
+  const all = Array.from({length:n}, (_,i) => `assets/${dir}/${String(i+1).padStart(2,"0")}.jpg`);
+  return [all[portada-1], ...all.filter((_,i) => i !== portada-1)];
+};
+const PROPS = [
+  {id:1, tipo:"alquiler", titulo:"Bodega industrial nueva", zona:"Por Club Mayan Golf", precio:9500, mon:"$", nota:"al mes, mantenimiento incluido",
+   specs:[["1,463 m²","de construcción"],["2,103 v²","de terreno"],["23","parqueos"],["9 m","de altura al hombro"],["6","baños, 3 con ducha"],["Pozo propio","85 galones por minuto"]],
+   fotos:fotos("alquiler-bodega-industrial",23,3)},
+  {id:2, tipo:"alquiler", titulo:"Apartamento amueblado en Edificio Moretti", zona:"10a avenida, zona 10", precio:850, mon:"$", nota:"al mes, incluye cuota de servicios",
+   specs:[["72 m²","amueblado"],["1","habitación amplia"],["1","baño doble propósito"],["Balcón","con vista a la ciudad"],["Línea blanca","completa"],["Amenidades","gimnasio, piscina, BBQ"]],
+   fotos:fotos("alquiler-apartamento-zona10",18,4)},
+  {id:3, tipo:"alquiler", titulo:"Apartamento en AVIA", zona:"Zona 10", precio:1100, mon:"$", nota:"al mes + IVA, mantenimiento incluido",
+   specs:[["68 m²","1 habitación"],["Balcón","amplio"],["1","parqueo"],["Bodega","incluida"]],
+   fotos:[], tiktok:"https://vt.tiktok.com/ZSgLJRPwo/"},
 ];
-// ========================================================
+// =========================================================================
 
 const $ = s => document.querySelector(s);
-const fmt = (n,m=MONEDA) => m + Math.round(n).toLocaleString("en-US");
-const wa = txt => `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`;
-const ICON = {venta:"🏠",alquiler:"🔑",remodelacion:"🛠️"};
-let tab = "alquiler";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const money = (n,m) => m + Math.round(n).toLocaleString("en-US");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.querySelectorAll("[data-wa]").forEach(a => a.href = wa(a.dataset.wa));
 
-function render(){
-  $("#list").innerHTML = PROPS.filter(p=>p.tipo===tab).map(p=>{
-    const datos = [p.hab&&`${p.hab} hab`, p.ban&&`${p.ban} baños`, p.m2&&`${p.m2} m²`].filter(Boolean).join(" · ");
-    const precio = p.precio ? fmt(p.precio,p.mon)+(p.mensual?" /mes":"") : "Cotización gratis";
-    return `<article class="card">
-      <div class="ph-w"><div class="ph">${p.fotos.length?p.fotos.map(f=>`<img src="${f}" alt="${p.titulo}" loading="lazy">`).join(""):ICON[p.tipo]}</div>${p.fotos.length>1?`<small>${p.fotos.length} fotos →</small>`:""}</div>
-      <div class="body"><div class="price">${precio}</div><strong>${p.titulo}</strong>
-        <div class="meta">${p.zona}${datos?" · "+datos:""}</div><div class="meta">${p.desc||""}</div>
-        <div class="row">
-          <a class="btn wa" target="_blank" rel="noopener" href="${wa(`Hola, me interesa: ${p.titulo} (${precio}).`)}">WhatsApp</a>
-          <button class="btn sec" data-cita="${p.id}">Agendar cita</button>
-        </div></div></article>`;
-  }).join("");
-  $("#calc").hidden = tab!=="venta";
-}
+$("#list-alquiler").innerHTML = PROPS.filter(p => p.tipo==="alquiler").map(p => {
+  const precio = money(p.precio, p.mon);
+  const gal = p.fotos.length
+    ? `<div class="track" tabindex="0" aria-label="Fotos de ${esc(p.titulo)}">${p.fotos.map((f,i)=>`<img src="${f}" alt="${esc(p.titulo)}, foto ${i+1}" loading="lazy">`).join("")}</div>
+       <div class="nav"><span>1 / ${p.fotos.length}</span><button type="button" data-dir="-1" aria-label="Foto anterior">‹</button><button type="button" data-dir="1" aria-label="Foto siguiente">›</button></div>`
+    : `<div class="noph"><b>${esc(p.specs[0][0])}</b><span>Fotos en nuestra publicación</span><a class="btn btn-ink" href="${p.tiktok}" target="_blank" rel="noopener">Ver en TikTok</a></div>`;
+  return `<article class="listing rv">
+    <div class="gal">${gal}</div>
+    <div>
+      <h3>${esc(p.titulo)}</h3>
+      <p class="where">${esc(p.zona)}</p>
+      <div class="price">${precio} <small>${esc(p.nota)}</small></div>
+      <ul class="specs">${p.specs.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
+      <div class="acts">
+        <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(`Hola Mario, me interesa: ${p.titulo} (${precio} ${p.nota}).`)}">Preguntar por WhatsApp</a>
+        <button class="btn btn-tone" type="button" data-cita="${p.id}">Agendar visita</button>
+      </div>
+    </div>
+  </article>`;
+}).join("");
 
-$("#tabs").onclick = e => {
-  const b = e.target.closest("button"); if(!b) return;
-  tab = b.dataset.t;
-  document.querySelectorAll("#tabs button").forEach(x=>x.setAttribute("aria-selected", x===b));
-  render();
-};
 
-// Cita -> mensaje de WhatsApp con filtro básico (forma de pago y presupuesto)
+// Carrusel: botones y contador
+document.querySelectorAll(".gal").forEach(g => {
+  const tr = g.querySelector(".track"); if(!tr) return;
+  const lab = g.querySelector(".nav span"), n = tr.children.length;
+  const idx = () => Math.round(tr.scrollLeft / tr.clientWidth);
+  g.querySelectorAll("[data-dir]").forEach(b => b.onclick = () =>
+    tr.scrollTo({left: ((idx() + +b.dataset.dir + n) % n) * tr.clientWidth, behavior:"smooth"}));
+  tr.addEventListener("scroll", () => lab.textContent = `${idx()+1} / ${n}`, {passive:true});
+});
+
+// Cita → WhatsApp con filtro básico (forma de pago y presupuesto)
 let cur;
-$("#list").onclick = e => {
+document.addEventListener("click", e => {
   const b = e.target.closest("[data-cita]"); if(!b) return;
-  cur = PROPS.find(p=>p.id==b.dataset.cita);
+  cur = PROPS.find(p => p.id == b.dataset.cita);
   $("#f-prop").textContent = cur.titulo;
   $("#f-dia").min = new Date().toISOString().slice(0,10);
   $("#cita").showModal();
-};
+});
 $("#f-x").onclick = () => $("#cita").close();
-$("#f").onsubmit = () => {
-  const m = `Hola, soy ${$("#f-nom").value}. Quiero una cita para ver: ${cur.titulo}.\nDía: ${$("#f-dia").value}\nPago: ${$("#f-pago").value}\nPresupuesto: ${$("#f-pres").value||"—"}`;
-  window.open(wa(m), "_blank");
-};
+$("#f").onsubmit = () => window.open(wa(`Hola Mario, soy ${$("#f-nom").value}. Quiero visitar: ${cur.titulo}.\nDía: ${$("#f-dia").value}\nPago: ${$("#f-pago").value}\nPresupuesto: ${$("#f-pres").value || "—"}`), "_blank");
 
-// Amortización: cuota fija mensual
+// Calculadora: cuota fija mensual
 function calc(){
-  const precio=+$("#c-precio").value, eng=+$("#c-eng").value/100, r=+$("#c-tasa").value/100/12;
-  const P = precio*(1-eng);
-  $("#c-out").innerHTML = [10,20,30].map(a=>{
-    const n=a*12, c = r ? P*r/(1-Math.pow(1+r,-n)) : P/n;
-    return `<tr><td>${a} años</td><td>${fmt(c)}</td><td>${fmt(c*n+precio*eng)}</td></tr>`;
-  }).join("");
+  const P0 = +$("#c-precio").value, m = $("#c-mon").value, e = +$("#c-eng").value/100, r = +$("#c-tasa").value/100/12;
+  $("#o-eng").value = $("#c-eng").value; $("#o-tasa").value = $("#c-tasa").value;
+  const P = P0*(1-e);
+  $("#c-out").innerHTML = [10,20,30].map(a => { const n=a*12, c = r ? P*r/(1-Math.pow(1+r,-n)) : P/n;
+    return `<div><b>${money(c,m)}</b><span>al mes a ${a} años</span></div>`; }).join("");
+  $("#c-note").textContent = `Enganche de ${money(P0*e,m)} y ${money(P,m)} financiados. Es una referencia; la cuota real depende del banco.`;
 }
-["#c-precio","#c-eng","#c-tasa"].forEach(s=>$(s).oninput=calc);
+["#c-precio","#c-mon","#c-eng","#c-tasa"].forEach(s => $(s).addEventListener("input", calc));
+calc();
 
-$("#fab").href = wa("Hola, vi su página y quiero información.");
-render(); calc();
+// Entradas al hacer scroll
+const io = new IntersectionObserver(es => es.forEach(x => { if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); } }), {rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".rv").forEach((el,i) => { el.style.transitionDelay = (i%4)*70 + "ms"; io.observe(el); });
 </script>
 </body>
 </html>
