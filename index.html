@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Arriola 360 · Propiedades en Guatemala</title>
-<meta name="description" content="Venta y renta de apartamentos, casas, bodegas y locales en Guatemala. Fotos, precios, ubicación y citas por WhatsApp.">
+<title>Arriola 360 · Propiedades en renta y venta en Guatemala</title>
+<meta name="description" content="Apartamentos, casas, bodegas y locales en renta y venta en Guatemala, con fotos reales, precio y ubicación. Agenda tu visita por WhatsApp.">
 <meta property="og:title" content="Arriola 360 · Propiedades en Guatemala">
-<meta property="og:description" content="Venta y renta de propiedades. Fotos, precios, ubicación y citas por WhatsApp.">
+<meta property="og:description" content="Fotos reales, precio y ubicación de cada propiedad. Agenda tu visita por WhatsApp.">
 <meta property="og:image" content="assets/alquiler-apartamento-zona10/04.jpg">
 <link rel="icon" href="assets/logo/logo-marca.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,9 +47,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-
 @media(max-width:900px){.bar nav{display:none}.bar .btn{padding:11px 18px;font-size:15px}}
 
 /* portada */
-.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(24px,5vw,64px)}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(24px,5vw,64px)}
 .hero h1{font-size:clamp(52px,7vw,104px)}
-.hero p{font-size:clamp(18px,1.6vw,21px);max-width:32ch;margin:28px 0 32px}
+.hero p{font-size:clamp(18px,1.6vw,21px);max-width:38ch;margin:28px 0 32px}
 .hero .acts{display:flex;gap:12px;flex-wrap:wrap}
 .hero figure{margin:0;aspect-ratio:4/5;overflow:hidden}
 .hero figure img{width:100%;height:100%;object-fit:cover}
@@ -222,23 +222,23 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
 <main id="top">
   <div class="wrap hero">
     <div>
-      <h1 class="rv split">Propiedades en Guatemala</h1>
-      <p class="rv">Venta y renta de apartamentos, casas, bodegas y locales. Mira fotos, precios y ubicación, y agenda tu visita por WhatsApp.</p>
+      <h1 class="rv split">Encuentra dónde vivir o trabajar</h1>
+      <p class="rv">Apartamentos, casas, bodegas y locales en renta y venta en Guatemala. Cada propiedad muestra fotos reales, precio y ubicación, así nos escribes solo por las que te interesan.</p>
       <div class="acts rv">
-        <a class="btn btn-ink" href="#propiedades">Ver propiedades</a>
-        <a class="btn btn-tone" href="#te-ayudamos">Dime qué buscas</a>
+        <a class="btn btn-ink" href="#propiedades">Ver propiedades disponibles</a>
+        <a class="btn btn-tone" href="#te-ayudamos">Cuéntanos qué buscas</a>
       </div>
     </div>
     <figure>
       <img src="assets/alquiler-apartamento-zona10/04.jpg" alt="Comedor con vista a la ciudad, apartamento en Edificio Moretti, zona 10" fetchpriority="high">
-      <figcaption>Apartamento amueblado en Edificio Moretti, zona 10. En renta.</figcaption>
+      <figcaption>Vista desde el apartamento amueblado del Edificio Moretti, zona 10. En renta.</figcaption>
     </figure>
   </div>
 
   <section id="propiedades" class="wrap">
     <div class="head">
       <h2 class="rv split">Propiedades disponibles</h2>
-      <p class="rv">Filtra por lo que necesitas. Desliza las fotos de cada propiedad y abre los detalles para ver todo.</p>
+      <p class="rv">Filtra por tipo, zona y precio. Cada ficha trae fotos, medidas y lo que incluye el precio.</p>
     </div>
     <form class="filters rv" id="filtros" aria-label="Filtrar propiedades">
       <div class="seg-wrap"><span style="display:block;font-size:14px;font-weight:500;margin-bottom:6px">Operación</span>
@@ -251,7 +251,7 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
       <div><label for="f-precio">Precio máximo</label>
         <select id="f-precio"><option value="">Sin límite</option><option value="1000">Hasta $1,000</option><option value="2500">Hasta $2,500</option><option value="5000">Hasta $5,000</option><option value="10000">Hasta $10,000</option><option value="250000">Hasta $250,000</option><option value="500000">Hasta $500,000</option></select>
       </div>
-      <button class="btn btn-tone clear" type="reset" style="background:#fff">Limpiar</button>
+      <button class="btn btn-tone clear" type="reset" style="background:#fff">Quitar filtros</button>
     </form>
     <p class="count" id="count" aria-live="polite"></p>
     <div id="lista"></div>
@@ -259,8 +259,8 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
 
   <section id="mapa" class="wrap">
     <div class="head">
-      <h2 class="rv split">Dónde están</h2>
-      <p class="rv">Toca un precio para ver la propiedad. El mapa sigue los filtros de arriba.</p>
+      <h2 class="rv split">Ubicación en el mapa</h2>
+      <p class="rv">Toca un precio para abrir su ficha. El mapa muestra las mismas propiedades que tus filtros.</p>
     </div>
     <div id="mapa-general" role="region" aria-label="Mapa de propiedades en Ciudad de Guatemala"></div>
     <p class="map-note" id="map-note"></p>
@@ -270,8 +270,8 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
     <div class="lead">
       <div class="txt">
         <div class="head" style="margin-bottom:24px"><h2 class="rv split">¿No encuentras lo que buscas?</h2></div>
-        <p class="rv">Cuéntanos qué necesitas y cuál es tu presupuesto. Te enviamos por WhatsApp las opciones que mejor se ajusten, incluso las que todavía no publicamos.</p>
-        <p class="rv">Si quieres vender o rentar tu propiedad, también te ayudamos: mándanos los datos y la promocionamos en TikTok, Facebook e Instagram.</p>
+        <p class="rv">Dinos qué tipo de propiedad, en qué zona y con qué presupuesto. Te mandamos por WhatsApp las opciones que encajan, incluidas las que aún no publicamos.</p>
+        <p class="rv">¿Tienes una propiedad para vender o rentar? Mándanos fotos de teléfono y los datos básicos. La publicamos en TikTok, Facebook e Instagram, y si necesita arreglos, Construservicios la deja lista.</p>
       </div>
       <form id="lead" class="rv">
         <fieldset style="border:0;padding:0;margin:0">
@@ -295,7 +295,8 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
           <div><label for="l-cuando">¿Para cuándo?</label><select id="l-cuando"><option>Lo antes posible</option><option>En 1 a 3 meses</option><option>Más adelante</option></select></div>
         </div>
         <label for="l-nota">Algo más que debamos saber (opcional)</label><textarea id="l-nota" rows="2" placeholder="Ej. que acepte mascotas, 2 parqueos"></textarea>
-        <button class="btn btn-wa" type="submit">Enviar por WhatsApp</button>
+        <button class="btn btn-wa" type="submit">Enviar mi búsqueda por WhatsApp</button>
+        <p style="font-size:15px;color:var(--mut);margin:12px 0 0">Se abre WhatsApp con tu mensaje escrito. Tú decides si lo envías.</p>
       </form>
     </div>
   </section>
@@ -306,13 +307,13 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
         <img class="rv" src="assets/remodelacion/construservicios-logo.png" alt="Construservicios">
         <div>
           <h2 class="rv split">Construcción y remodelación</h2>
-          <p class="rv">Construservicios es nuestra empresa de construcción. Diseñamos, construimos y remodelamos casas, oficinas, locales y bodegas, desde la obra gris hasta los acabados.</p>
+          <p class="rv">Construservicios es la constructora detrás de Arriola 360. Hace obra nueva y remodelaciones en casas, oficinas, locales y bodegas, desde los planos hasta los acabados.</p>
         </div>
       </div>
       <div class="ba-wrap">
         <div class="rv">
           <h3 style="font-size:clamp(30px,3vw,42px)">Antes y después</h3>
-          <p>Arrastra la línea sobre la foto para comparar.</p>
+          <p>Arrastra la línea sobre la foto para ver el cambio.</p>
           <div class="ba-pick" role="group" aria-label="Elegir proyecto">
             <button type="button" aria-pressed="true" data-ba="portales">Local en Portales Mall<small>De obra gris a tienda</small></button>
             <button type="button" aria-pressed="false" data-ba="monterrico">Chalet en Monterrico<small>De terreno a casa con piscina</small></button>
@@ -333,7 +334,7 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
         <div class="rv"><h3>Acabados</h3><p>Pisos, tablayeso, cocinas, baños, pintura y ventanería.</p></div>
         <div class="rv"><h3>Instalaciones</h3><p>Electricidad, agua, aire acondicionado y fibra óptica.</p></div>
       </div>
-      <h3 class="rv" style="font-size:clamp(30px,3vw,42px);margin-bottom:24px">Obras terminadas</h3>
+      <h3 class="rv" style="font-size:clamp(30px,3vw,42px);margin-bottom:24px">Obras de Construservicios</h3>
       <div class="works">
         <figure class="rv"><div><img src="assets/remodelacion/san-marino-piscina.jpg" alt="Chalet en San Marino, Puerto de San José" loading="lazy"></div><figcaption>Chalet en San Marino, Puerto de San José</figcaption></figure>
         <figure class="rv"><div><img src="assets/remodelacion/mixco-fachada.jpg" alt="Vivienda en San Cristóbal, Mixco" loading="lazy"></div><figcaption>Vivienda en San Cristóbal, Mixco</figcaption></figure>
@@ -346,7 +347,7 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
       </div>
       <div class="acts rv">
         <a class="btn btn-wa" data-wa="Hola, quiero cotizar una obra o remodelación con Construservicios. Es para: ___" target="_blank" rel="noopener">Cotizar mi proyecto</a>
-        <p>Cotización sin costo. Instagram: @construserviciosgt</p>
+        <p>Más obras en Instagram: <a href="https://www.instagram.com/construserviciosgt/" target="_blank" rel="noopener">@construserviciosgt</a></p>
       </div>
     </div>
   </section>
@@ -374,7 +375,7 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
     <select id="f-pago"><option>Contado</option><option>Financiamiento bancario</option><option>Aún no lo sé</option></select>
     <label for="f-pres">Presupuesto aproximado</label><input id="f-pres" inputmode="numeric" placeholder="Ej. $900 al mes">
     <div class="acts">
-      <button class="btn btn-wa" type="submit">Enviar por WhatsApp</button>
+      <button class="btn btn-wa" type="submit">Pedir mi visita</button>
       <button class="btn btn-tone" type="button" id="f-x">Cancelar</button>
     </div>
   </form>
@@ -436,7 +437,7 @@ function ficha(p){
   const gal = p.fotos.length
     ? `<div class="track" tabindex="0" aria-label="Fotos de ${esc(p.titulo)}">${p.fotos.map((f,i)=>`<img src="${f}" alt="${esc(p.titulo)}, foto ${i+1}" loading="lazy">`).join("")}</div>
        <div class="nav"><span>1 / ${p.fotos.length}</span><button type="button" data-dir="-1" aria-label="Foto anterior">‹</button><button type="button" data-dir="1" aria-label="Foto siguiente">›</button></div>`
-    : `<div class="noph"><b>${esc(p.clave[0][0])}</b><span>Fotos en nuestra publicación</span><a class="btn btn-ink" href="${p.tiktok}" target="_blank" rel="noopener">Ver en TikTok</a></div>`;
+    : `<div class="noph"><b>${esc(p.clave[0][0])}</b><span>Las fotos están en nuestra publicación de TikTok</span><a class="btn btn-ink" href="${p.tiktok}" target="_blank" rel="noopener">Ver fotos en TikTok</a></div>`;
   const mapa = p.mapa
     ? `<div class="map"><iframe title="Mapa: ${esc(p.mapa.nombre)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
          src="https://maps.google.com/maps?q=${p.mapa.lat},${p.mapa.lng}&z=16&output=embed"></iframe>
@@ -452,12 +453,12 @@ function ficha(p){
       <div class="price">${precio} <small>${esc(p.nota)}</small></div>
       <ul class="specs">${p.clave.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
       <div class="acts">
-        <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(`Hola, me interesa: ${label(p)} (${precio} ${p.nota}).`)}">Preguntar por WhatsApp</a>
+        <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(`Hola, me interesa: ${label(p)} (${precio} ${p.nota}).`)}">Preguntar por esta propiedad</a>
         <button class="btn btn-tone" type="button" data-cita="${p.id}">Agendar visita</button>
       </div>
     </div>
     <details class="more">
-      <summary>Ver todos los detalles${p.mapa ? " y el mapa" : ""}</summary>
+      <summary>Ver todos los detalles${p.mapa ? " y la ubicación" : ""}</summary>
       <div class="more-in">
         <div class="groups">${p.grupos.map(([t,l])=>`<div><h4>${esc(t)}</h4><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>
         ${mapa}
@@ -477,7 +478,7 @@ function pintar(){
   const L = visibles();
   $("#count").textContent = `${L.length} ${L.length===1 ? "propiedad" : "propiedades"}`;
   $("#lista").innerHTML = L.length ? L.map(ficha).join("") :
-    `<div class="empty"><h3>No hay propiedades con esos filtros</h3><p>Cuéntanos qué buscas y te mandamos opciones por WhatsApp.</p><a class="btn btn-ink" href="#te-ayudamos">Dime qué buscas</a></div>`;
+    `<div class="empty"><h3>Aún no tenemos algo así publicado</h3><p>Dinos qué buscas y te escribimos por WhatsApp cuando tengamos una opción que encaje.</p><a class="btn btn-ink" href="#te-ayudamos">Cuéntanos qué buscas</a></div>`;
   carruseles(); revelar($("#lista")); pines(L);
 }
 document.querySelectorAll("[data-op]").forEach(b => b.onclick = () => {
