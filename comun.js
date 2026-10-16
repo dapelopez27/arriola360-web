@@ -45,7 +45,11 @@ function iniciarCita(){
 function carrusel(track, contador){
   const n = track.children.length, idx = () => Math.round(track.scrollLeft / track.clientWidth);
   track.addEventListener("scroll", () => contador && (contador.textContent = `${idx()+1} / ${n}`), {passive:true});
-  return dir => track.scrollTo({left: ((idx() + dir + n) % n) * track.clientWidth, behavior:"smooth"});
+  return dir => {
+    const left = ((idx() + dir + n) % n) * track.clientWidth;
+    track.scrollTo({left, behavior:"smooth"});
+    setTimeout(() => { if (Math.abs(track.scrollLeft - left) > 2) track.scrollLeft = left; }, 600);   // respaldo si el navegador no anima
+  };
 }
 
 // entradas: títulos palabra por palabra, el resto sube suave; nada queda oculto si el navegador no avisa
