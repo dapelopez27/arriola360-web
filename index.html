@@ -47,9 +47,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-
 @media(max-width:900px){.bar nav{display:none}.bar .btn{padding:11px 18px;font-size:15px}}
 
 /* portada */
-.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(24px,5vw,64px)}
-.hero h1{font-size:clamp(52px,7vw,104px)}
-.hero p{font-size:clamp(18px,1.6vw,21px);max-width:38ch;margin:28px 0 32px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(24px,5vw,64px)}
+.hero h1{font-size:clamp(48px,6.2vw,92px)}
+.hero p{font-size:clamp(18px,1.6vw,21px);max-width:38ch;margin:24px 0 0}
 .hero .acts{display:flex;gap:12px;flex-wrap:wrap}
 .hero figure{margin:0;aspect-ratio:4/5;overflow:hidden}
 .hero figure img{width:100%;height:100%;object-fit:cover}
@@ -61,15 +61,23 @@ section{padding-top:var(--gap)}
 .head h2{font-size:clamp(44px,6vw,88px)}
 .head p{max-width:42ch;margin:0;color:var(--mut)}
 
-/* filtros */
-.filters{display:grid;grid-template-columns:auto 1fr 1fr 1fr auto;gap:12px;align-items:end;background:var(--tone);padding:18px;margin-bottom:24px}
+/* buscador (pestaña que se despliega) */
+.search{margin-top:32px}
+.search summary{display:inline-flex;align-items:center;gap:10px;cursor:pointer;list-style:none;background:var(--ink);color:#fff;font-weight:600;padding:14px 22px}
+.search summary::-webkit-details-marker{display:none}
+.search summary::after{content:"";width:8px;height:8px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.search[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end;background:var(--tone);padding:20px}
+.filters .seg-wrap,.filters button[type=submit]{grid-column:1/-1}
+.filters .lab{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
 .filters label{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
 .filters select{width:100%;padding:12px 14px;font:inherit;border:0;background:#fff;color:var(--ink);border-radius:0}
 .seg{display:flex;background:#fff;padding:4px;gap:4px}
 .seg button{border:0;background:none;padding:9px 16px;font:600 15px/1 var(--sans);cursor:pointer;color:var(--ink);border-radius:999px}
 .seg button[aria-pressed=true]{background:var(--ink);color:#fff}
-.count{font-size:15px;color:var(--mut);margin:0 0 32px}
-@media(max-width:900px){.filters{grid-template-columns:1fr 1fr}.filters .seg-wrap,.filters .clear{grid-column:1/-1}.seg button{flex:1}}
+.count{font-size:15px;color:var(--mut);margin:0 0 32px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.count a,.count button{color:var(--ink);font:600 15px var(--sans);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:860px){.filters{grid-template-columns:1fr}.seg button{flex:1}.search summary{width:100%;justify-content:space-between}}
 
 /* fichas */
 .listing{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(20px,3vw,48px) clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(56px,6vw,96px)}
@@ -185,7 +193,6 @@ footer .cols{display:flex;gap:clamp(24px,6vw,96px);flex-wrap:wrap}
 footer .cols p{margin:0}
 footer .cols b{display:block;font-size:14px;color:var(--mut);font-weight:500}
 
-.fab{position:fixed;right:16px;bottom:16px;z-index:1001}
 
 dialog{border:0;padding:clamp(20px,4vw,32px);max-width:440px;width:calc(100% - 32px);box-shadow:0 20px 60px #0004} /* taste-skill-ignore: diálogo flotante */
 dialog::backdrop{background:#141414aa}
@@ -222,12 +229,24 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
 <main id="top">
   <div class="wrap hero">
     <div>
-      <h1 class="rv split">Encuentra dónde vivir o trabajar</h1>
-      <p class="rv">Apartamentos, casas, bodegas y locales en renta y venta en Guatemala. Cada propiedad muestra fotos reales, precio y ubicación, así nos escribes solo por las que te interesan.</p>
-      <div class="acts rv">
-        <a class="btn btn-ink" href="#propiedades">Ver propiedades disponibles</a>
-        <a class="btn btn-tone" href="#te-ayudamos">Cuéntanos qué buscas</a>
-      </div>
+      <h1 class="rv split">Encuentra el espacio ideal para ti</h1>
+      <p class="rv">Apartamentos, casas, bodegas y locales en renta y venta en Guatemala.</p>
+      <details class="search rv" id="buscador">
+        <summary>Buscar propiedad</summary>
+        <form class="filters" id="filtros" aria-label="Buscar propiedad">
+          <div class="seg-wrap"><span class="lab">Quiero</span>
+            <div class="seg" role="group" aria-label="Operación">
+              <button type="button" data-op="" aria-pressed="true">Todo</button><button type="button" data-op="renta" aria-pressed="false">Rentar</button><button type="button" data-op="venta" aria-pressed="false">Comprar</button>
+            </div>
+          </div>
+          <div><label for="f-tipo">Tipo</label><select id="f-tipo"><option value="">Todos</option></select></div>
+          <div><label for="f-zona">Zona</label><select id="f-zona"><option value="">Todas</option></select></div>
+          <div><label for="f-precio">Precio máximo</label>
+            <select id="f-precio"><option value="">Sin límite</option><option value="1000">Hasta $1,000</option><option value="2500">Hasta $2,500</option><option value="5000">Hasta $5,000</option><option value="10000">Hasta $10,000</option><option value="250000">Hasta $250,000</option><option value="500000">Hasta $500,000</option></select>
+          </div>
+          <button class="btn btn-ink" type="submit">Buscar</button>
+        </form>
+      </details>
     </div>
     <figure>
       <img src="assets/alquiler-apartamento-zona10/04.jpg" alt="Comedor con vista a la ciudad, apartamento en Edificio Moretti, zona 10" fetchpriority="high">
@@ -237,23 +256,10 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
 
   <section id="propiedades" class="wrap">
     <div class="head">
-      <h2 class="rv split">Propiedades disponibles</h2>
-      <p class="rv">Filtra por tipo, zona y precio. Cada ficha trae fotos, medidas y lo que incluye el precio.</p>
+      <h2 class="rv split">Explora las propiedades</h2>
+      <p class="rv">Desliza las fotos de cada una y abre los detalles para ver medidas, amenidades y ubicación.</p>
     </div>
-    <form class="filters rv" id="filtros" aria-label="Filtrar propiedades">
-      <div class="seg-wrap"><span style="display:block;font-size:14px;font-weight:500;margin-bottom:6px">Operación</span>
-        <div class="seg" role="group" aria-label="Operación">
-          <button type="button" data-op="" aria-pressed="true">Todas</button><button type="button" data-op="renta" aria-pressed="false">Renta</button><button type="button" data-op="venta" aria-pressed="false">Venta</button>
-        </div>
-      </div>
-      <div><label for="f-tipo">Tipo</label><select id="f-tipo"><option value="">Todos</option></select></div>
-      <div><label for="f-zona">Zona</label><select id="f-zona"><option value="">Todas</option></select></div>
-      <div><label for="f-precio">Precio máximo</label>
-        <select id="f-precio"><option value="">Sin límite</option><option value="1000">Hasta $1,000</option><option value="2500">Hasta $2,500</option><option value="5000">Hasta $5,000</option><option value="10000">Hasta $10,000</option><option value="250000">Hasta $250,000</option><option value="500000">Hasta $500,000</option></select>
-      </div>
-      <button class="btn btn-tone clear" type="reset" style="background:#fff">Quitar filtros</button>
-    </form>
-    <p class="count" id="count" aria-live="polite"></p>
+    <p class="count"><span id="count" aria-live="polite"></span> <a href="#top" id="cambiar">Cambiar búsqueda</a> <button type="button" id="quitar" hidden>Quitar filtros</button></p>
     <div id="lista"></div>
   </section>
 
@@ -363,7 +369,6 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
   </div>
 </footer>
 
-<a class="btn btn-wa fab" data-wa="Hola, vi su página y quiero información." target="_blank" rel="noopener">WhatsApp</a>
 
 <dialog id="cita">
   <form method="dialog" id="f">
@@ -392,13 +397,14 @@ const fotos = (dir, n, portada) => {           // portada primero, luego las dem
 };
 // op: "renta" o "venta" · tipo: Apartamento, Casa, Bodega, Local, Oficina, Terreno · mapa: null si aún no hay ubicación
 const PROPS = [
-  {id:1, op:"renta", tipo:"Bodega", titulo:"Nave industrial", cond:"Nueva", zona:"Área metropolitana", lugar:"Ubicación céntrica, con salida a varias rutas",
+  {id:1, op:"renta", tipo:"Bodega", titulo:"Nave industrial", cond:"Nueva", zona:null, lugar:"Ubicación al agendar tu visita",
    precio:9500, mon:"$", nota:"al mes, mantenimiento incluido",
    clave:[["1,463 m²","de construcción"],["800 m²","de bodega"],["9 m","de altura al hombro"],["23","parqueos"]],
    grupos:[
      ["Espacios",["800 m² de bodega","200 m² de mezzanine corrido, a 5 m de altura","1,000 m² de área techada","463 m² de área de maniobras","2,103 v² de terreno"]],
      ["Estructura",["9 m de altura al hombro y 11 m a la cumbrera","Ventanería de doble altura en aluminio anodizado","Puertas enrollables motorizadas"]],
      ["Servicios",["Pozo de agua propio: 600 pies, 85 galones por minuto","6 baños, 3 con ducha y pila","Garita de seguridad con baño y dormitorio","23 parqueos para vehículos y personal"]],
+     ["Accesos",["Ubicación céntrica","Salida a varias rutas de entrada y salida de la ciudad"]],
      ["Condiciones",["Construcción nueva","Renta de $9,500 al mes","Mantenimiento incluido"]]],
    mapa:null,
    fotos:fotos("alquiler-bodega-industrial",23,3)},
@@ -409,7 +415,8 @@ const PROPS = [
      ["El apartamento",["Sala, comedor y cocina","Habitación amplia","Baño completo","Balcón con vista a la ciudad","Cortinas instaladas"]],
      ["Equipado con",["Refrigeradora y estufa","Extractor de olores","Torre de lavado y secado","Pila y calentador de agua"]],
      ["Amenidades",["Gimnasio","Piscina","Salón social y sala de reuniones","BBQ lounge","Área de juegos para niños","Parqueo de visitas"]],
-     ["Condiciones",["Renta de $850 al mes","Incluye cuota de mantenimiento","Precio fijo","Cerca de centros comerciales, restaurantes y farmacias"]]],
+     ["Ubicación y accesos",["10a avenida y 15 calle, zona 10","Cerca de centros comerciales","Restaurantes y farmacias a pocos minutos"]],
+     ["Condiciones",["Renta de $850 al mes","Incluye cuota de mantenimiento","Precio fijo"]]],
    mapa:{lat:14.5937808, lng:-90.5083938, nombre:"Edificio Moretti, 10a avenida y 15 calle, zona 10"},
    fotos:fotos("alquiler-apartamento-zona10",18,4)},
   {id:3, op:"renta", tipo:"Apartamento", titulo:"Apartamento con balcón", zona:"Zona 10", lugar:"Edificio AVIA",
@@ -428,7 +435,7 @@ const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 const money = (n,m) => m + Math.round(n).toLocaleString("en-US");
 const usd = p => p.mon === "Q" ? p.precio / TC : p.precio;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const label = p => `${p.titulo} en ${p.zona}`;
+const label = p => p.zona ? `${p.titulo} en ${p.zona}` : p.titulo;
 document.querySelectorAll("[data-wa]").forEach(a => a.href = wa(a.dataset.wa));
 
 // --- fichas ---
@@ -449,7 +456,7 @@ function ficha(p){
     <div class="gal">${gal}${p.cond ? `<span class="cond">${esc(p.cond)}</span>` : ""}</div>
     <div>
       <h3>${esc(p.titulo)}</h3>
-      <p class="where"><b class="kind">${esc(p.tipo)} en ${p.op}</b> · ${esc(p.zona)} · ${esc(p.lugar)}</p>
+      <p class="where"><b class="kind">${esc(p.tipo)} en ${p.op}</b> · ${[p.zona, p.lugar].filter(Boolean).map(esc).join(" · ")}</p>
       <div class="price">${precio} <small>${esc(p.nota)}</small></div>
       <ul class="specs">${p.clave.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
       <div class="acts">
@@ -471,12 +478,13 @@ function ficha(p){
 const F = {op:"", tipo:"", zona:"", max:""};
 const uniq = k => [...new Set(PROPS.map(p => p[k]))].sort();
 uniq("tipo").forEach(t => $("#f-tipo").add(new Option(t, t)));
-uniq("zona").forEach(z => $("#f-zona").add(new Option(z, z)));
+uniq("zona").filter(Boolean).forEach(z => $("#f-zona").add(new Option(z, z)));
 const visibles = () => PROPS.filter(p => (!F.op || p.op===F.op) && (!F.tipo || p.tipo===F.tipo) && (!F.zona || p.zona===F.zona) && (!F.max || usd(p) <= +F.max));
 
 function pintar(){
   const L = visibles();
   $("#count").textContent = `${L.length} ${L.length===1 ? "propiedad" : "propiedades"}`;
+  $("#quitar").hidden = !(F.op || F.tipo || F.zona || F.max);
   $("#lista").innerHTML = L.length ? L.map(ficha).join("") :
     `<div class="empty"><h3>Aún no tenemos algo así publicado</h3><p>Dinos qué buscas y te escribimos por WhatsApp cuando tengamos una opción que encaje.</p><a class="btn btn-ink" href="#te-ayudamos">Cuéntanos qué buscas</a></div>`;
   carruseles(); revelar($("#lista")); pines(L);
@@ -487,7 +495,10 @@ document.querySelectorAll("[data-op]").forEach(b => b.onclick = () => {
 $("#f-tipo").onchange = e => { F.tipo = e.target.value; pintar(); };
 $("#f-zona").onchange = e => { F.zona = e.target.value; pintar(); };
 $("#f-precio").onchange = e => { F.max = e.target.value; pintar(); };
-$("#filtros").onreset = () => setTimeout(() => { Object.assign(F,{op:"",tipo:"",zona:"",max:""}); document.querySelectorAll("[data-op]").forEach(x => x.setAttribute("aria-pressed", x.dataset.op==="")); pintar(); });
+$("#filtros").onsubmit = e => { e.preventDefault(); $("#propiedades").scrollIntoView({behavior:"smooth"}); };
+$("#quitar").onclick = () => { $("#filtros").reset(); Object.assign(F,{op:"",tipo:"",zona:"",max:""}); document.querySelectorAll("[data-op]").forEach(x => x.setAttribute("aria-pressed", x.dataset.op==="")); pintar(); };
+$("#cambiar").onclick = () => { $("#buscador").open = true; };
+if (matchMedia("(min-width: 861px)").matches) $("#buscador").open = true;   // en escritorio el buscador aparece abierto
 
 // --- carrusel ---
 function carruseles(){
@@ -521,7 +532,7 @@ function pines(lista){
   capa.clearLayers();
   const con = lista.filter(p => p.mapa);
   con.forEach(p => L.marker([p.mapa.lat, p.mapa.lng], {icon: L.divIcon({className:"", html:`<span class="pin">${money(p.precio,p.mon)}</span>`})})
-    .bindPopup(`<b>${esc(p.titulo)}</b>${esc(p.zona)} · ${money(p.precio,p.mon)} ${esc(p.nota)}<br><a href="#prop-${p.id}">Ver la propiedad</a>`).addTo(capa));
+    .bindPopup(`<b>${esc(p.titulo)}</b>${esc(p.zona || "")} · ${money(p.precio,p.mon)} ${esc(p.nota)}<br><a href="#prop-${p.id}">Ver la propiedad</a>`).addTo(capa));
   if (con.length > 1) mapa.fitBounds(con.map(p => [p.mapa.lat, p.mapa.lng]), {padding:[60,60], maxZoom:15});
   else if (con.length === 1) mapa.setView([con[0].mapa.lat, con[0].mapa.lng], 15);
 }
