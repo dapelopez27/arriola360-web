@@ -64,7 +64,7 @@ section{padding-top:var(--gap)}
 .head p{max-width:42ch;margin:0;color:var(--mut)}
 
 /* fichas */
-.listing{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(56px,6vw,96px)}
+.listing{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(20px,3vw,48px) clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(56px,6vw,96px)}
 .listing:nth-child(even) .gal{order:2}
 .gal{position:relative;background:var(--tone)}
 .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:3/2}
@@ -86,6 +86,21 @@ section{padding-top:var(--gap)}
 .listing .acts{display:flex;gap:10px;flex-wrap:wrap}
 @media(max-width:860px){.listing{grid-template-columns:1fr}.listing:nth-child(even) .gal{order:0}.gal{margin:0 calc(var(--m)*-1)}}
 
+.more{grid-column:1/-1;order:3;background:var(--tone)}
+.more summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"+";font:500 28px/1 var(--sans);transition:transform .2s}
+.more[open] summary::after{transform:rotate(45deg)}
+.more-in{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(20px,3vw,48px);padding:4px 22px 26px}
+.groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 28px}
+.groups h4{font:600 24px/1.1 var(--serif);margin:0 0 8px}
+.groups ul{margin:0;padding-left:18px}
+.groups li{margin:4px 0}
+.map iframe{width:100%;aspect-ratio:4/3;border:0;display:block;background:#e6e6e3}
+.map p{margin:10px 0 12px;font-weight:500}
+.map .acts{display:flex;gap:8px;flex-wrap:wrap}
+.nomap{display:grid;place-content:center;background:#fff;padding:24px;text-align:center}
+@media(max-width:860px){.more{margin:0 calc(var(--m)*-1)}.more-in,.groups{grid-template-columns:1fr}}
 /* venta + calculadora */
 .sell{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
 .sell .txt p{font-size:19px;max-width:40ch}
@@ -103,21 +118,33 @@ section{padding-top:var(--gap)}
 @media(max-width:860px){.sell{grid-template-columns:1fr}.res{grid-template-columns:1fr}}
 
 /* remodelación (Construservicios) */
-.remo{background:var(--dark);color:var(--on-dark);margin-top:var(--gap);padding:var(--gap) 0}
-.remo .head p{color:#c9c4b8}
-.ba{margin:0 0 56px}
-.ba img{width:100%}
-.ba figcaption{margin-top:12px;color:#c9c4b8;font-size:15px}
-.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,3vw,40px);margin-bottom:72px}
-.svc h3{font-size:28px;margin-bottom:10px;color:#fff}
-.svc p{margin:0;color:#c9c4b8;font-size:16px}
-.works{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.remo{background:var(--tone);margin-top:var(--gap);padding:var(--gap) 0}
+.ba-wrap{display:grid;grid-template-columns:1fr 2fr;gap:clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(64px,8vw,112px)}
+.ba-pick{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.ba-pick button{text-align:left;padding:16px 18px;border:0;background:#fff;font:600 17px/1.3 var(--sans);cursor:pointer;color:var(--ink);transition:background-color .15s}
+.ba-pick button small{display:block;font-weight:400;color:var(--mut);font-size:15px;margin-top:2px}
+.ba-pick button[aria-pressed=true]{background:var(--ink);color:#fff}
+.ba-pick button[aria-pressed=true] small{color:#c9c4b8}
+.ba{position:relative;aspect-ratio:4/3;overflow:hidden;background:#ddd;--pos:50%}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 var(--pos))}
+.ba .line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;pointer-events:none}
+.ba .line::after{content:"‹ ›";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-content:center;font:600 18px/1 var(--sans);color:var(--ink)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .tag{position:absolute;top:14px;padding:6px 12px;background:#141414cc;color:#fff;font-size:14px;font-weight:600}
+.ba .t1{left:14px}.ba .t2{right:14px}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,3vw,40px);margin-bottom:clamp(64px,8vw,112px)}
+.svc h3{font-size:30px;margin-bottom:10px}
+.svc p{margin:0;font-size:16px}
+.works{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 16px}
 .works figure{margin:0}
-.works img{aspect-ratio:12/5;width:100%;object-fit:cover}
-.works figcaption{font-size:15px;margin-top:8px;color:#c9c4b8}
+.works img{aspect-ratio:4/3;width:100%;object-fit:cover;transition:transform .4s}
+.works figure div{overflow:hidden}
+.works figure:hover img{transform:scale(1.04)}
+.works figcaption{font-size:15px;margin-top:8px}
 .remo .acts{margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.remo .acts p{margin:0;color:#c9c4b8}
-@media(max-width:860px){.svc{grid-template-columns:1fr 1fr}.works{grid-template-columns:1fr}}
+.remo .acts p{margin:0}
+@media(max-width:860px){.ba-wrap{grid-template-columns:1fr}.ba{margin:0 calc(var(--m)*-1)}.ba-pick{flex-direction:row;overflow-x:auto}.ba-pick button{flex:0 0 auto}.svc{grid-template-columns:1fr 1fr}.works{grid-template-columns:1fr 1fr;gap:12px}}
 
 /* cierre */
 footer{padding:var(--gap) 0 120px}
@@ -225,23 +252,40 @@ dialog .acts{display:flex;gap:10px;margin-top:22px}
         <h2>Remodelamos antes de vender</h2>
         <p>Una propiedad bien presentada se vende y se alquila más rápido. Con Construservicios, nuestra constructora, hacemos la obra completa.</p>
       </div>
-      <figure class="ba rv">
-        <img src="assets/remodelacion/obra-34.jpg" alt="Local comercial en Portales Mall, antes en obra gris y después terminado" loading="lazy">
-        <figcaption>Local comercial en Portales Mall: de obra gris a tienda terminada.</figcaption>
-      </figure>
+      <div class="ba-wrap">
+        <div class="rv">
+          <h3 style="font-size:clamp(30px,3vw,42px)">Antes y después</h3>
+          <p>Arrastra la línea sobre la foto para comparar.</p>
+          <div class="ba-pick" role="group" aria-label="Elegir proyecto">
+            <button type="button" aria-pressed="true" data-ba="portales">Local en Portales Mall<small>De obra gris a tienda</small></button>
+            <button type="button" aria-pressed="false" data-ba="monterrico">Chalet en Monterrico<small>De terreno a casa con piscina</small></button>
+            <button type="button" aria-pressed="false" data-ba="palacio">Palacio Nacional<small>Remodelación de baños</small></button>
+          </div>
+        </div>
+        <div class="ba rv" id="ba">
+          <img class="before" src="assets/remodelacion/portales-antes.jpg" alt="Antes" loading="lazy">
+          <img class="after" src="assets/remodelacion/portales-despues.jpg" alt="Después" loading="lazy">
+          <span class="tag t1">Antes</span><span class="tag t2">Después</span>
+          <span class="line"></span>
+          <input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después">
+        </div>
+      </div>
       <div class="svc">
         <div class="rv"><h3>Diseño</h3><p>Planos, renders, cálculo estructural y diseño de interiores.</p></div>
         <div class="rv"><h3>Construcción</h3><p>Casas, apartamentos, oficinas, bodegas y movimiento de tierras.</p></div>
         <div class="rv"><h3>Acabados</h3><p>Pisos, tablayeso, cocinas, baños, pintura y ventanería.</p></div>
         <div class="rv"><h3>Instalaciones</h3><p>Electricidad, agua, aire acondicionado y fibra óptica.</p></div>
       </div>
+      <h3 class="rv" style="font-size:clamp(30px,3vw,42px);margin-bottom:24px">Obras terminadas</h3>
       <div class="works">
-        <figure class="rv"><img src="assets/remodelacion/obra-06.jpg" alt="Chalet con piscina en Monterrico" loading="lazy"><figcaption>Chalet en Monterrico, de cero a terminado</figcaption></figure>
-        <figure class="rv"><img src="assets/remodelacion/obra-09.jpg" alt="Vivienda en Cayalá" loading="lazy"><figcaption>Vivienda en Cayalá, zona 16</figcaption></figure>
-        <figure class="rv"><img src="assets/remodelacion/obra-18.jpg" alt="Oficinas remodeladas en Edificio Vasanta" loading="lazy"><figcaption>Oficinas en Edificio Vasanta, zona 10</figcaption></figure>
-        <figure class="rv"><img src="assets/remodelacion/obra-27.jpg" alt="Baños remodelados en el Palacio Nacional" loading="lazy"><figcaption>Baños del Palacio Nacional</figcaption></figure>
-        <figure class="rv"><img src="assets/remodelacion/obra-39.jpg" alt="Cocinas a la medida" loading="lazy"><figcaption>Cocinas a la medida</figcaption></figure>
-        <figure class="rv"><img src="assets/remodelacion/obra-38.jpg" alt="Pérgolas" loading="lazy"><figcaption>Pérgolas y terrazas</figcaption></figure>
+        <figure class="rv"><div><img src="assets/remodelacion/san-marino-piscina.jpg" alt="Chalet en San Marino, Puerto de San José" loading="lazy"></div><figcaption>Chalet en San Marino, Puerto de San José</figcaption></figure>
+        <figure class="rv"><div><img src="assets/remodelacion/mixco-fachada.jpg" alt="Vivienda en San Cristóbal, Mixco" loading="lazy"></div><figcaption>Vivienda en San Cristóbal, Mixco</figcaption></figure>
+        <figure class="rv"><div><img src="assets/remodelacion/vasanta-oficina.jpg" alt="Oficina en Edificio Vasanta, zona 10" loading="lazy"></div><figcaption>Oficina en Edificio Vasanta, zona 10</figcaption></figure>
+        <figure class="rv"><div><img src="assets/remodelacion/macrosistemas-tienda.jpg" alt="Tiendas Macrosistemas" loading="lazy"></div><figcaption>Tiendas Macrosistemas</figcaption></figure>
+        <figure class="rv"><div><img src="assets/remodelacion/mixco-sala.jpg" alt="Interiores en San Cristóbal, Mixco" loading="lazy"></div><figcaption>Interiores en San Cristóbal, Mixco</figcaption></figure>
+        <figure class="rv"><div><img src="assets/remodelacion/cocina.jpg" alt="Cocina a la medida" loading="lazy"></div><figcaption>Cocina a la medida</figcaption></figure>
+        <figure class="rv"><div><img src="assets/remodelacion/pergola.jpg" alt="Pérgola y terraza" loading="lazy"></div><figcaption>Pérgola y terraza</figcaption></figure>
+        <figure class="rv"><div><img src="assets/remodelacion/san-marino-casa.jpg" alt="Chalet en San Marino, vista frontal" loading="lazy"></div><figcaption>Chalet en San Marino, vista frontal</figcaption></figure>
       </div>
       <div class="acts rv">
         <a class="btn btn-wa" data-wa="Hola Mario, quiero cotizar una remodelación. Es para: ___" target="_blank" rel="noopener">Cotizar remodelación</a>
@@ -288,14 +332,30 @@ const fotos = (dir, n, portada) => {           // portada primero, luego las dem
 };
 const PROPS = [
   {id:1, tipo:"alquiler", titulo:"Bodega industrial nueva", zona:"Por Club Mayan Golf", precio:9500, mon:"$", nota:"al mes, mantenimiento incluido",
-   specs:[["1,463 m²","de construcción"],["2,103 v²","de terreno"],["23","parqueos"],["9 m","de altura al hombro"],["6","baños, 3 con ducha"],["Pozo propio","85 galones por minuto"]],
+   clave:[["1,463 m²","de construcción"],["2,103 v²","de terreno"],["23","parqueos"],["9 m","de altura al hombro"]],
+   grupos:[
+     ["Áreas",["800 m² de bodega","200 m² de mezzanine corrido, a 5 m de altura","1,000 m² de área techada","463 m² de área de maniobras","2,103 v² de terreno"]],
+     ["Construcción",["9 m de altura al hombro y 11 m a la cumbrera","Ventanería de doble altura en aluminio anodizado (Luminalco)","Puertas enrollables motorizadas (Cortigua)"]],
+     ["Servicios",["Pozo propio de 600 pies, 85 galones por minuto (Serpro)","6 baños, 3 con ducha y pila","Garita de seguridad con baño y dormitorio","23 parqueos para vehículos y personal"]],
+     ["Ubicación",["Por el Club Mayan Golf","Céntrica, con varias rutas de entrada y salida de la ciudad"]]],
+   mapa:null,
    fotos:fotos("alquiler-bodega-industrial",23,3)},
-  {id:2, tipo:"alquiler", titulo:"Apartamento amueblado en Edificio Moretti", zona:"10a avenida, zona 10", precio:850, mon:"$", nota:"al mes, incluye cuota de servicios",
-   specs:[["72 m²","amueblado"],["1","habitación amplia"],["1","baño doble propósito"],["Balcón","con vista a la ciudad"],["Línea blanca","completa"],["Amenidades","gimnasio, piscina, BBQ"]],
+  {id:2, tipo:"alquiler", titulo:"Apartamento amueblado en Edificio Moretti", zona:"10a avenida y 15 calle, zona 10", precio:850, mon:"$", nota:"al mes, incluye cuota de servicios. No negociable",
+   clave:[["72 m²","amueblado"],["1","habitación amplia"],["1","baño doble propósito"],["Balcón","con vista a la ciudad"]],
+   grupos:[
+     ["El apartamento",["Sala, comedor y cocina","Balcón","Cortinas","Baño de visitas y privado en uno"]],
+     ["Línea blanca incluida",["Refrigeradora y estufa","Extractor de olores","Torre de lavado y secado","Pila y calentador general"]],
+     ["Amenidades del edificio",["Gimnasio y piscina","Salón social y sala de reuniones","BBQ lounge","Juegos para niños","Parqueo de visitas"]],
+     ["Cerca de",["Centros comerciales","Restaurantes","Farmacias"]]],
+   mapa:{lat:14.5937808, lng:-90.5083938, nombre:"Edificio Moretti, 10a avenida y 15 calle, zona 10"},
    fotos:fotos("alquiler-apartamento-zona10",18,4)},
   {id:3, tipo:"alquiler", titulo:"Apartamento en AVIA", zona:"Zona 10", precio:1100, mon:"$", nota:"al mes + IVA, mantenimiento incluido",
-   specs:[["68 m²","1 habitación"],["Balcón","amplio"],["1","parqueo"],["Bodega","incluida"]],
-   fotos:[], tiktok:"https://vt.tiktok.com/ZSgLJRPwo/"},
+   clave:[["68 m²","de construcción"],["1","habitación"],["1","parqueo"],["Bodega","incluida"]],
+   grupos:[
+     ["El apartamento",["1 habitación","1 baño completo","Balcón amplio","Área de lavandería"]],
+     ["Incluye",["1 parqueo","Bodega","Mantenimiento"]]],
+   mapa:null, tiktok:"https://vt.tiktok.com/ZSgLJRPwo/",
+   fotos:[]},
 ];
 // =========================================================================
 
@@ -310,19 +370,33 @@ $("#list-alquiler").innerHTML = PROPS.filter(p => p.tipo==="alquiler").map(p => 
   const gal = p.fotos.length
     ? `<div class="track" tabindex="0" aria-label="Fotos de ${esc(p.titulo)}">${p.fotos.map((f,i)=>`<img src="${f}" alt="${esc(p.titulo)}, foto ${i+1}" loading="lazy">`).join("")}</div>
        <div class="nav"><span>1 / ${p.fotos.length}</span><button type="button" data-dir="-1" aria-label="Foto anterior">‹</button><button type="button" data-dir="1" aria-label="Foto siguiente">›</button></div>`
-    : `<div class="noph"><b>${esc(p.specs[0][0])}</b><span>Fotos en nuestra publicación</span><a class="btn btn-ink" href="${p.tiktok}" target="_blank" rel="noopener">Ver en TikTok</a></div>`;
-  return `<article class="listing rv">
+    : `<div class="noph"><b>${esc(p.clave[0][0])}</b><span>Fotos en nuestra publicación</span><a class="btn btn-ink" href="${p.tiktok}" target="_blank" rel="noopener">Ver en TikTok</a></div>`;
+  const mapa = p.mapa
+    ? `<div class="map"><iframe title="Mapa: ${esc(p.mapa.nombre)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+         src="https://maps.google.com/maps?q=${p.mapa.lat},${p.mapa.lng}&z=16&output=embed"></iframe>
+         <p>${esc(p.mapa.nombre)}</p>
+         <div class="acts"><a class="btn btn-tone" href="https://www.google.com/maps/search/?api=1&query=${p.mapa.lat},${p.mapa.lng}" target="_blank" rel="noopener">Abrir en Google Maps</a>
+         <a class="btn btn-tone" href="https://waze.com/ul?ll=${p.mapa.lat},${p.mapa.lng}&navigate=yes" target="_blank" rel="noopener">Ir con Waze</a></div></div>`
+    : `<div class="map nomap"><p>Te compartimos la ubicación exacta al agendar tu visita.</p></div>`;
+  return `<article class="listing rv" id="prop-${p.id}">
     <div class="gal">${gal}</div>
     <div>
       <h3>${esc(p.titulo)}</h3>
       <p class="where">${esc(p.zona)}</p>
       <div class="price">${precio} <small>${esc(p.nota)}</small></div>
-      <ul class="specs">${p.specs.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
+      <ul class="specs">${p.clave.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
       <div class="acts">
         <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(`Hola Mario, me interesa: ${p.titulo} (${precio} ${p.nota}).`)}">Preguntar por WhatsApp</a>
         <button class="btn btn-tone" type="button" data-cita="${p.id}">Agendar visita</button>
       </div>
     </div>
+    <details class="more">
+      <summary>Ver todos los detalles${p.mapa ? " y el mapa" : ""}</summary>
+      <div class="more-in">
+        <div class="groups">${p.grupos.map(([t,l])=>`<div><h4>${esc(t)}</h4><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>
+        ${mapa}
+      </div>
+    </details>
   </article>`;
 }).join("");
 
@@ -360,6 +434,16 @@ function calc(){
 }
 ["#c-precio","#c-mon","#c-eng","#c-tasa"].forEach(s => $(s).addEventListener("input", calc));
 calc();
+
+// Antes y después: la línea se arrastra con el control de rango
+const ba = $("#ba"), baR = ba.querySelector("input");
+baR.addEventListener("input", () => ba.style.setProperty("--pos", baR.value + "%"));
+document.querySelectorAll("[data-ba]").forEach(b => b.onclick = () => {
+  document.querySelectorAll("[data-ba]").forEach(x => x.setAttribute("aria-pressed", x===b));
+  ba.querySelector(".before").src = `assets/remodelacion/${b.dataset.ba}-antes.jpg`;
+  ba.querySelector(".after").src = `assets/remodelacion/${b.dataset.ba}-despues.jpg`;
+  baR.value = 50; ba.style.setProperty("--pos","50%");
+});
 
 // Entradas al hacer scroll
 const io = new IntersectionObserver(es => es.forEach(x => { if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); } }), {rootMargin:"0px 0px 15% 0px"});
