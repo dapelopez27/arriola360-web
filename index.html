@@ -6,8 +6,8 @@
 <title>Arriola360 · Inmobiliaria</title>
 <meta name="description" content="Venta, alquiler y remodelación de propiedades. Escríbenos por WhatsApp.">
 <style>
-:root{--bg:#f7f6f2;--ink:#1c1c1a;--mut:#6b6b66;--card:#fff;--acc:#0f5c4d;--wa:#25d366;--line:#e4e2da}
-@media(prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f1f0ea;--mut:#a3a39b;--card:#1f1f1d;--acc:#4cc2a8;--line:#333330}}
+:root{--bg:#faf8f2;--ink:#1c1c1a;--mut:#6b6b66;--card:#fff;--acc:#8a6a14;--gold:#b8923a;--wa:#25d366;--line:#e4e2da}
+@media(prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f1f0ea;--mut:#a3a39b;--card:#1f1f1d;--acc:#d4af37;--gold:#d4af37;--line:#333330}}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
 header{padding:28px 16px 12px;max-width:960px;margin:auto}
@@ -16,12 +16,12 @@ header p{color:var(--mut);margin:.25rem 0 0}
 nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 nav div{max-width:960px;margin:auto;display:flex;gap:8px;padding:10px 16px;overflow-x:auto}
 nav button{flex:1;white-space:nowrap;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
-nav button[aria-selected=true]{background:var(--acc);color:#fff;border-color:var(--acc)}
+nav button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--gold)}
 main{max-width:960px;margin:auto;padding:16px}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
 .ph{aspect-ratio:4/3;background:linear-gradient(135deg,#b9d8cf,#e8dfc9);display:grid;place-items:center;font-size:3rem;overflow:hidden}
-.ph img{width:100%;height:100%;object-fit:cover}
+.ph{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;align-items:center;justify-content:center}.ph::-webkit-scrollbar{display:none}.ph img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:center}.ph-w{position:relative}.ph-w small{position:absolute;right:8px;bottom:8px;background:#000a;color:#fff;padding:2px 8px;border-radius:99px;font-size:.75rem}header img{height:96px;display:block;margin:0 auto}header{text-align:center}
 .body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
 .price{font-size:1.25rem;font-weight:700;color:var(--acc)}
 .meta{color:var(--mut);font-size:.9rem}
@@ -45,13 +45,14 @@ footer{text-align:center;color:var(--mut);padding:32px 16px 90px;font-size:.85re
 </head>
 <body>
 <header>
-  <h1>Arriola360</h1>
+  <img src="assets/logo/logo.jpg" alt="Arriola 360 · Venta, renta, inversión inmobiliaria">
+  <h1 hidden>Arriola360</h1>
   <p>Venta · Alquiler · Remodelación. Mira, elige y escríbenos por WhatsApp.</p>
 </header>
 
 <nav><div role="tablist" id="tabs">
-  <button role="tab" data-t="venta" aria-selected="true">Venta</button>
-  <button role="tab" data-t="alquiler" aria-selected="false">Alquiler</button>
+  <button role="tab" data-t="venta" aria-selected="false">Venta</button>
+  <button role="tab" data-t="alquiler" aria-selected="true">Alquiler</button>
   <button role="tab" data-t="remodelacion" aria-selected="false">Remodelación</button>
 </div></nav>
 
@@ -93,30 +94,32 @@ footer{text-align:center;color:var(--mut);padding:32px 16px 90px;font-size:.85re
 // ===== Configuración: lo único que el cliente edita =====
 const WA = "50254134111";          // número de WhatsApp con código de país, sin + ni espacios
 const MONEDA = "Q";               // cambiar a "Q", "L", "MX$", etc.
-const PROPS = [                    // foto: ruta o URL; vacío = placeholder
-  {id:1,tipo:"venta",titulo:"Casa en residencial cerrado",precio:1200000,zona:"Zona 16",hab:4,ban:3,m2:280,foto:""},
-  {id:2,tipo:"venta",titulo:"Local comercial en avenida principal",precio:850000,zona:"Zona 10",hab:0,ban:2,m2:120,foto:""},
-  {id:3,tipo:"alquiler",titulo:"Apartamento amueblado",precio:900,zona:"Zona 14",hab:2,ban:2,m2:85,foto:"",mensual:true},
-  {id:4,tipo:"alquiler",titulo:"Oficina con parqueo",precio:1500,zona:"Zona 9",hab:0,ban:1,m2:70,foto:"",mensual:true},
-  {id:5,tipo:"remodelacion",titulo:"Remodelación de cocina y baños",precio:0,zona:"Cotizamos sin costo",hab:0,ban:0,m2:0,foto:""},
-  {id:6,tipo:"remodelacion",titulo:"Adecuación de local comercial",precio:0,zona:"Cotizamos sin costo",hab:0,ban:0,m2:0,foto:""},
+const PROPS = [                    // fotos: lista de rutas; mon: moneda de ese precio
+  {id:1,tipo:"alquiler",titulo:"Bodega industrial de alto nivel (nueva)",precio:9500,mon:"$",mensual:true,zona:"Club Mayan Golf",m2:1463,
+   desc:"Mantenimiento incluido · 800 m² de bodega + 200 m² de mezzanine · 23 parqueos · pozo propio · 9 m de altura",
+   fotos:["assets/alquiler-bodega-industrial/01.jpg","assets/alquiler-bodega-industrial/02.jpg","assets/alquiler-bodega-industrial/03.jpg","assets/alquiler-bodega-industrial/04.jpg","assets/alquiler-bodega-industrial/05.jpg","assets/alquiler-bodega-industrial/06.jpg","assets/alquiler-bodega-industrial/07.jpg","assets/alquiler-bodega-industrial/08.jpg","assets/alquiler-bodega-industrial/09.jpg","assets/alquiler-bodega-industrial/10.jpg","assets/alquiler-bodega-industrial/11.jpg","assets/alquiler-bodega-industrial/12.jpg","assets/alquiler-bodega-industrial/13.jpg","assets/alquiler-bodega-industrial/14.jpg","assets/alquiler-bodega-industrial/15.jpg","assets/alquiler-bodega-industrial/16.jpg","assets/alquiler-bodega-industrial/17.jpg","assets/alquiler-bodega-industrial/18.jpg","assets/alquiler-bodega-industrial/19.jpg","assets/alquiler-bodega-industrial/20.jpg","assets/alquiler-bodega-industrial/21.jpg","assets/alquiler-bodega-industrial/22.jpg","assets/alquiler-bodega-industrial/23.jpg"]},
+  {id:2,tipo:"alquiler",titulo:"Apartamento amueblado en Edificio Moretti",precio:850,mon:"$",mensual:true,zona:"Zona 10",hab:1,ban:1,m2:72,
+   desc:"Incluye cuota de servicios · gimnasio, piscina, salón social y BBQ lounge · precio no negociable",
+   fotos:["assets/alquiler-apartamento-zona10/01.jpg","assets/alquiler-apartamento-zona10/02.jpg","assets/alquiler-apartamento-zona10/03.jpg","assets/alquiler-apartamento-zona10/05.jpg","assets/alquiler-apartamento-zona10/06.jpg","assets/alquiler-apartamento-zona10/07.jpg","assets/alquiler-apartamento-zona10/08.jpg","assets/alquiler-apartamento-zona10/09.jpg","assets/alquiler-apartamento-zona10/10.jpg","assets/alquiler-apartamento-zona10/11.jpg","assets/alquiler-apartamento-zona10/12.jpg","assets/alquiler-apartamento-zona10/13.jpg","assets/alquiler-apartamento-zona10/14.jpg","assets/alquiler-apartamento-zona10/15.jpg","assets/alquiler-apartamento-zona10/16.jpg","assets/alquiler-apartamento-zona10/17.jpg","assets/alquiler-apartamento-zona10/18.jpg","assets/alquiler-apartamento-zona10/19.jpg"]},
+  {id:3,tipo:"venta",titulo:"Propiedades en venta",precio:0,mon:"Q",zona:"Próximamente",fotos:[],desc:"Escríbenos y te enviamos las opciones disponibles."},
+  {id:4,tipo:"remodelacion",titulo:"Construcción y remodelación",precio:0,zona:"Cotizamos sin costo",fotos:[],desc:"Remodelación, ingeniería y arquitectura. Cuéntanos qué necesitas."},
 ];
 // ========================================================
 
 const $ = s => document.querySelector(s);
-const fmt = n => MONEDA + Math.round(n).toLocaleString("en-US");
+const fmt = (n,m=MONEDA) => m + Math.round(n).toLocaleString("en-US");
 const wa = txt => `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`;
 const ICON = {venta:"🏠",alquiler:"🔑",remodelacion:"🛠️"};
-let tab = "venta";
+let tab = "alquiler";
 
 function render(){
   $("#list").innerHTML = PROPS.filter(p=>p.tipo===tab).map(p=>{
     const datos = [p.hab&&`${p.hab} hab`, p.ban&&`${p.ban} baños`, p.m2&&`${p.m2} m²`].filter(Boolean).join(" · ");
-    const precio = p.precio ? fmt(p.precio)+(p.mensual?" /mes":"") : "Cotización gratis";
+    const precio = p.precio ? fmt(p.precio,p.mon)+(p.mensual?" /mes":"") : "Cotización gratis";
     return `<article class="card">
-      <div class="ph">${p.foto?`<img src="${p.foto}" alt="${p.titulo}" loading="lazy">`:ICON[p.tipo]}</div>
+      <div class="ph-w"><div class="ph">${p.fotos.length?p.fotos.map(f=>`<img src="${f}" alt="${p.titulo}" loading="lazy">`).join(""):ICON[p.tipo]}</div>${p.fotos.length>1?`<small>${p.fotos.length} fotos →</small>`:""}</div>
       <div class="body"><div class="price">${precio}</div><strong>${p.titulo}</strong>
-        <div class="meta">${p.zona}${datos?" · "+datos:""}</div>
+        <div class="meta">${p.zona}${datos?" · "+datos:""}</div><div class="meta">${p.desc||""}</div>
         <div class="row">
           <a class="btn wa" target="_blank" rel="noopener" href="${wa(`Hola, me interesa: ${p.titulo} (${precio}).`)}">WhatsApp</a>
           <button class="btn sec" data-cita="${p.id}">Agendar cita</button>
