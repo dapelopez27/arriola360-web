@@ -91,8 +91,8 @@ if (!p) {
     ${galeria}
     <div class="det">
       <div>
-        <h1 class="rv split">${esc(p.titulo)}</h1>
-        <p class="where rv"><b class="kind">${esc(p.tipo)} en ${p.op}</b> · ${[p.zona, p.lugar].filter(Boolean).map(esc).join(" · ")}</p>
+        <h1>${esc(p.titulo)}</h1>
+        <p class="where"><b class="kind">${esc(p.tipo)} en ${p.op}</b> · ${[p.zona, p.lugar].filter(Boolean).map(esc).join(" · ")}</p>
         <ul class="specs rv">${p.clave.map(([b,s])=>`<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join("")}</ul>
         <div class="groups">${p.grupos.map(([t,l])=>`<div class="rv"><h2>${esc(t)}</h2><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>
         ${ubic}
@@ -108,6 +108,8 @@ if (!p) {
         <button class="share" type="button" id="share">Compartir esta propiedad</button>
       </aside>
     </div>
+    <div class="dock"><div><b>${money(p.precio,p.mon)}</b><span>${esc(p.nota)}</span></div>
+      <a class="btn btn-wa" href="${wa(msgInteres(p))}" target="_blank" rel="noopener">WhatsApp</a></div>
     ${otras.length ? `<section class="otras"><div class="head"><h2 class="rv split">Otras propiedades</h2></div><div class="cards">${otras.map(tarjeta).join("")}</div></section>` : ""}`;
 
   // visor de fotos a pantalla completa

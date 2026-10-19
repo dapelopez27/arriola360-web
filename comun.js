@@ -60,6 +60,7 @@ function revelar(root=document){
     h.innerHTML = h.textContent.trim().split(/\s+/).map((w,i) => `<span class="w"><span style="--i:${i}">${esc(w)}</span></span>`).join(" ");
   });
   root.querySelectorAll(".rv:not(.in)").forEach((el,i) => { el.style.transitionDelay = (i%4)*70 + "ms"; io.observe(el); });
+  requestAnimationFrame(barrer);   // lo que ya está en pantalla entra de inmediato, sin esperar al observador
 }
 const barrer = () => document.querySelectorAll(".rv:not(.in)").forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); });
 let tick; addEventListener("scroll", () => { clearTimeout(tick); tick = setTimeout(barrer, 400); }, {passive:true});

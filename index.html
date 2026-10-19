@@ -32,12 +32,12 @@
     <img src="assets/alquiler-apartamento-zona10/04.jpg" alt="Comedor con vista a la ciudad, apartamento en Edificio Moretti, zona 10" fetchpriority="high">
     <a class="foto-nota" href="propiedad.html?c=ARR-102">Apartamento amueblado, zona 10 · En renta</a>
     <div class="wrap">
-      <h1 class="rv split">Encuentra el espacio ideal para ti</h1>
-      <p class="rv">Apartamentos, casas, bodegas y locales en renta y venta en Guatemala.</p>
-      <details class="search rv" id="buscador">
+      <h1>Bodegas y apartamentos con precio a la vista</h1>
+      <p>Renta y venta en Guatemala, con fotos, medidas y condiciones de cada propiedad.</p>
+      <details class="search" id="buscador">
         <summary>Buscar propiedad</summary>
         <form class="filters" id="filtros" aria-label="Buscar propiedad">
-          <div class="seg-wrap"><span class="lab">Quiero</span>
+          <div class="seg-wrap"><span class="lab sr">Operación</span>
             <div class="seg" role="group" aria-label="Operación">
               <button type="button" data-op="" aria-pressed="true">Todo</button><button type="button" data-op="renta" aria-pressed="false">Rentar</button><button type="button" data-op="venta" aria-pressed="false">Comprar</button>
             </div>
@@ -55,7 +55,7 @@
 
   <section id="propiedades" class="wrap">
     <div class="head">
-      <h2 class="rv split">Explora las propiedades</h2>
+      <h2 class="rv split">Propiedades disponibles</h2>
       <p class="rv">Toca una propiedad para ver todas sus fotos, medidas, amenidades y ubicación.</p>
     </div>
     <p class="count"><span id="count" aria-live="polite"></span> <a href="#top" id="cambiar">Cambiar búsqueda</a> <button type="button" id="quitar" hidden>Quitar filtros</button></p>
@@ -198,7 +198,7 @@ $("#f-precio").onchange = e => { F.max = e.target.value; pintar(); };
 $("#filtros").onsubmit = e => { e.preventDefault(); $("#propiedades").scrollIntoView({behavior:"smooth"}); };
 $("#quitar").onclick = () => { $("#filtros").reset(); Object.assign(F,{op:"",tipo:"",zona:"",max:""}); document.querySelectorAll("[data-op]").forEach(x => x.setAttribute("aria-pressed", x.dataset.op==="")); pintar(); };
 $("#cambiar").onclick = () => { $("#buscador").open = true; };
-if (matchMedia("(min-width: 861px)").matches) $("#buscador").open = true;   // en escritorio el buscador va abierto sobre la foto
+$("#buscador").open = true;   // abierto en escritorio y en teléfono; el resumen sirve para cerrarlo
 
 // --- mapa general (OpenStreetMap) ---
 let mapa, capa;
